@@ -25,7 +25,7 @@ from data_api.v20191119.models import DataApiResponse
 
 class DataApiClient(AbstractClient):
     _apiVersion = "2019-11-19"
-    _endpoint = "dataapi.jrtzcloud.cn"
+    _endpoint = "dataapi.investoday.net"
     _svc_path = "dataapi/consensus"
     _resource_list = ['grd_bsc',
                       'est_bsc',

@@ -16,9 +16,9 @@ from common.exception.jrtzcloud_sdk_exception import CloudSDKException
 
 class Credential(object):
     def __init__(self, secretId, secretKey, token=None):
-        """Investoday Cloud Credentials.
+        """Jrtz Cloud Credentials.
 
-        Access https://console.cloud.Investoday.com/cam/capi to manage your
+        Access https://console.jrtzcloud.com/cam/capi to manage your
         credentials.
 
         :param secretId: The secret id of your credential.
