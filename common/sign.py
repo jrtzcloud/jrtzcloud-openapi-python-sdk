@@ -39,7 +39,7 @@ class Sign(object):
 
         def _get_signature_key(key, date, service):
             k_date = _hmac_sha256(('JC1' + key).encode('utf-8'), date)
-            k_service  = _hmac_sha256(k_date.digest(), service)
+            k_service = _hmac_sha256(k_date.digest(), service)
             k_signing = _hmac_sha256(k_service.digest(), 'jc1_request')
             return k_signing.digest()
 

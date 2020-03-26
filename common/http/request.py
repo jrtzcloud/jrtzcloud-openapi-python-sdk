@@ -41,14 +41,53 @@ class ProxyHTTPSConnection(HTTPSConnection):
         HTTPSConnection.request(self, method, url, body, headers)
 
 
+class ProxyHTTPConnection(HTTPConnection):
+    def __init__(self, host, port=None, timeout=60):
+        self.has_proxy = False
+        self.request_host = host
+        http_proxy = (os.environ.get('http_proxy')
+                      or os.environ.get('HTTP_PROXY'))
+        if http_proxy:
+            url = urlparse(http_proxy)
+            if not url.hostname:
+                url = urlparse('http://' + http_proxy)
+            host = url.hostname
+            port = url.port
+            self.has_proxy = True
+        HTTPConnection.__init__(self, host, port, timeout=timeout)
+        self.request_length = 0
+
+    def send(self, astr):
+        HTTPConnection.send(self, astr)
+        self.request_length += len(astr)
+
+    def request(self, method, url, body=None, headers={}):
+        self.request_length = 0
+        if self.has_proxy:
+            self.set_tunnel(self.request_host, 80)
+        headers.setdefault("Host", self.request_host)
+        HTTPConnection.request(self, method, url, body, headers)
+
 class ApiRequest(object):
     def __init__(self, host, req_timeout=60, debug=False):
-        self.conn = ProxyHTTPSConnection(host, timeout=req_timeout)
+        self.host = None
+        self.port = None
+        self.ssl = None
+        self.parse_host(host)
+        http_conn = ProxyHTTPSConnection if self.ssl else ProxyHTTPConnection
+        self.conn = http_conn(self.host, port=self.port, timeout=req_timeout)
         self.req_timeout = req_timeout
         self.keep_alive = False
         self.debug = debug
         self.request_size = 0
         self.response_size = 0
+
+    def parse_host(self, host):
+        http_, host_ = host.split('//') if '//' in host else ('https', host)
+        self.ssl = http_.lower().startswith('https')
+        self.host, self.port = host_.split(':') if ':' in host_ \
+            else (host_, 443) if self.ssl else (host_, 80)
+        # print(self.host, self.port, self.ssl)
 
     def set_req_timeout(self, req_timeout):
         self.req_timeout = req_timeout
@@ -71,12 +110,13 @@ class ApiRequest(object):
             req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
             self.conn.request(req_inter.method, req_inter_url,
                               None, req_inter.header)
-        elif req_inter.method == 'POST':
+        # elif req_inter.method == 'POST':
+        elif req_inter.method in ['POST', 'PUT', 'PATCH']:
             self.conn.request(req_inter.method, req_inter.uri,
                               req_inter.data, req_inter.header)
         else:
             raise CloudSDKException(
-                "ClientParamsError", 'Method only support (GET, POST)')
+                "ClientParamsError", 'Method only support (GET, POST,PUT,PATCH)')
 
     def send_request(self, req_inter):
         try:

@@ -35,12 +35,10 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = None
 
     def _deserialize(self, params):
-        ret = params.get("Ret")
-        if isinstance(ret,str):
-            self.InstanceSet = ret
-        elif isinstance(ret,dict):
+        ret = params.get("Instances") or params.get("Project")
+        if isinstance(ret, dict) or isinstance(ret, list):
             self.TotalCount = len(ret)
-            if ret.get('Cov'):
+            if isinstance(ret, dict) and ret.get('Cov'):
                 ret['Cov'] = json.loads(ret.pop('Cov'))
             self.InstanceSet = ret
         self.RequestId = params.get("RequestId")

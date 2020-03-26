@@ -14,8 +14,8 @@
 
 
 class HttpProfile(object):
-    def __init__(self, protocol=None, endpoint=None, reqMethod="POST", reqTimeout=60,
-                 keepAlive=False):
+    def __init__(self, protocol=None, endpoint=None, reqMethod=None, reqTimeout=60,
+                 keepAlive=False, svc_path=None, apiVersion=None, region=None):
         """HTTP profile.
         :param protocol: temporarily useless,set None
         :type protocol: str
@@ -27,8 +27,11 @@ class HttpProfile(object):
         :type reqTimeout: int
         """
         self.endpoint = endpoint
+        self.svc_path = svc_path
+        self.apiVersion = apiVersion
+        self.region = region
         self.reqTimeout = 60 if reqTimeout is None else reqTimeout
-        self.reqMethod = "POST" if reqMethod is None else reqMethod
+        self.reqMethod = "GET" if reqMethod is None else reqMethod
         self.protocol = protocol
         self.keepAlive = keepAlive
 

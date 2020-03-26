@@ -38,9 +38,10 @@ from common.sign import Sign
 
 warnings.filterwarnings("ignore")
 
-_json_content = 'application/json; charset=utf-8'
+_json_content = 'application/json;charset=utf-8'
+_json_patch_content = 'application/json-patch+json;charset=utf-8'
 _multipart_content = 'multipart/form-data'
-_form_urlencoded_content = 'application/x-www-form-urlencoded'
+_form_urlencoded_content = 'application/x-www-form-urlencoded;charset=utf-8'
 
 class AbstractClient(object):
     _requestPath = '/'
@@ -56,9 +57,11 @@ class AbstractClient(object):
             raise CloudSDKException(
                 "InvalidCredential", "Credential is None or invalid")
         self.credential = credential
-        self.region = region or self._region
+
         self.profile = profile or ClientProfile()
-        self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
+        self.apiVersion = self.profile.httpProfile.apiVersion or self._apiVersion
+        self.region = region or self.profile.httpProfile.region or self._region
+        self.request = ApiRequest(self.get_endpoint(), self.profile.httpProfile.reqTimeout)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
 
@@ -120,7 +123,7 @@ class AbstractClient(object):
         # params['RequestClient'] = self._sdkVersion
         params['Nonce'] = random.randint(1, sys.maxsize)
         params['Timestamp'] = int(time.time())
-        params['Version'] = self._apiVersion
+        params['Version'] = self.apiVersion
 
         if self.region:
             params['Region'] = self.region
@@ -149,15 +152,20 @@ class AbstractClient(object):
         content_type = self._default_content_type
         if req.method == 'GET':
             content_type = _form_urlencoded_content
-        elif req.method == 'POST':
+        elif req.method in ['POST', 'PUT', 'DELETE']:
             content_type = _json_content
+        elif req.method in ['PATCH']:
+            content_type = _json_patch_content
         options = options or {}
         if options.get("IsMultipart"):
             content_type = _multipart_content
         req.header["Content-Type"] = content_type
-
+        req.header["X-JC-RequestId"] = '12345678'   #for test
         endpoint = self._get_endpoint()
-        service = endpoint.split('.')[0]
+        service = self._get_service()
+        # print(3331,service)
+        # service = endpoint.split('.')[0]
+        # print(service)
         timestamp = int(time.time())
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
 
@@ -165,7 +173,7 @@ class AbstractClient(object):
         # req.header["X-TC-Action"] = action[0].upper() + action[1:]
         # req.header["X-TC-RequestClient"] = self._sdkVersion
         req.header["X-JC-Timestamp"] = timestamp
-        req.header["X-JC-Version"] = self._apiVersion
+        req.header["X-JC-Version"] = self.apiVersion
         # if self.profile.unsignedPayload is True:
         #     req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
         if self.region:
@@ -194,7 +202,7 @@ class AbstractClient(object):
             payload = ""
         else:
             ct = req.header["Content-Type"]
-            if ct == _json_content:
+            if ct in [_json_content, _json_patch_content]:
                 req.data = json.dumps(params)
             elif ct == _multipart_content:
                 boundary = uuid.uuid4().hex
@@ -231,6 +239,7 @@ class AbstractClient(object):
                                           req.header["X-JC-Timestamp"],
                                           credential_scope,
                                           digest)
+        # print(string2sign)
         signature = Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
         return signature
 
@@ -261,8 +270,9 @@ class AbstractClient(object):
         return body
 
     def _check_status(self, resp_inter):
-        if resp_inter.status != 200:
-            raise CloudSDKException("ServerNetworkError", resp_inter.data)
+        if resp_inter.status not in [200,201]:
+            print(resp_inter.status)
+            # raise CloudSDKException("ServerNetworkError", resp_inter.data)
 
     def _format_sign_string(self, params):
         formatParam = {}
@@ -276,19 +286,29 @@ class AbstractClient(object):
         endpoint = self.profile.httpProfile.endpoint
         if endpoint is None:
             endpoint = self._endpoint
+        endpoint = endpoint .split('//')[1] if '//' in endpoint else endpoint
+        # endpoint = endpoint .split(':')[0] if ':' in endpoint else endpoint
+        return endpoint
+
+    def _get_service(self):
+        return self._svc_path
+
+    def get_endpoint(self):
+        endpoint = self.profile.httpProfile.endpoint
+        if endpoint is None:
+            endpoint = self._endpoint
         return endpoint
 
     def call(self, action, params, options=None):
         endpoint = self._get_endpoint()
         self._requestPath = action
-
         req_inter = RequestInternal(endpoint,
                                     self.profile.httpProfile.reqMethod,
                                     self._requestPath)
         self._build_req_inter(action, params, req_inter, options)
-
+        # print(req_inter)
         resp_inter = self.request.send_request(req_inter)
-        # self._check_status(resp_inter)
+        self._check_status(resp_inter)
         data = resp_inter.data
         if sys.version_info[0] > 2:
             data = data.decode()
