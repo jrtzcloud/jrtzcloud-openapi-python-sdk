@@ -160,12 +160,8 @@ class AbstractClient(object):
         if options.get("IsMultipart"):
             content_type = _multipart_content
         req.header["Content-Type"] = content_type
-        req.header["X-JC-RequestId"] = '12345678'   #for test
         endpoint = self._get_endpoint()
         service = self._get_service()
-        # print(3331,service)
-        # service = endpoint.split('.')[0]
-        # print(service)
         timestamp = int(time.time())
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
 
