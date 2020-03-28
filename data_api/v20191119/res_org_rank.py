@@ -14,6 +14,6 @@ class ResOrgRank(object):
     def get_data(self, **params):
         data_api_client = DataApiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("res_org_rank", **params)
+        result = data_api_client.get_data("res-org-rank", **params)
 
         return result

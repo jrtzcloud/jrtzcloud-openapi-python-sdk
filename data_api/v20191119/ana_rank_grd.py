@@ -14,6 +14,6 @@ class AnaRankGrd(object):
     def get_data(self, **params):
         data_api_client = DataApiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("ana_rank_grd", **params)
+        result = data_api_client.get_data("ana-rank-grd", **params)
 
         return result

@@ -14,6 +14,6 @@ class IduClsRef(object):
     def get_data(self, **params):
         data_api_client = DataApiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("idu_cls_ref", **params)
+        result = data_api_client.get_data("idu-cls-ref", **params)
 
         return result

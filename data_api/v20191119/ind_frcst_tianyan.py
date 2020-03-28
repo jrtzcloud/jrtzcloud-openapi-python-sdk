@@ -14,6 +14,6 @@ class IndFrcstTianyan(object):
     def get_data(self, **params):
         data_api_client = DataApiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("ind_frcst_tianyan", **params)
+        result = data_api_client.get_data("ind-frcst-tianyan", **params)
 
         return result

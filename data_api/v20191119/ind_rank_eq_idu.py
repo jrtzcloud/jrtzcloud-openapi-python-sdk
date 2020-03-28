@@ -14,6 +14,6 @@ class IndRankEqIdu(object):
     def get_data(self, **params):
         data_api_client = DataApiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("ind_rank_eq_idu", **params)
+        result = data_api_client.get_data("ind-rank-eq-idu", **params)
 
         return result

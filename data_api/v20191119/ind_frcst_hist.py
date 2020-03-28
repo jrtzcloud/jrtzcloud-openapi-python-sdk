@@ -14,6 +14,6 @@ class IndFrcstHist(object):
     def get_data(self, **params):
         data_api_client = DataApiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("ind_frcst_hist", **params)
+        result = data_api_client.get_data("ind-frcst-hist", **params)
 
         return result

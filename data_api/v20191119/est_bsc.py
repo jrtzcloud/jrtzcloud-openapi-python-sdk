@@ -14,6 +14,6 @@ class EstBsc(object):
     def get_data(self, **params):
         data_api_client = DataApiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("est_bsc", **params)
+        result = data_api_client.get_data("est-bsc", **params)
 
         return result

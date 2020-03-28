@@ -26,4 +26,4 @@ def get_ana_rank_est_idu(secret_id, secret_key):
 
 
 if __name__ == '__main__':
-    get_ana_rank_est_idu("D8xc9JKzEmEvry8XRhkP8JPm5b530pdW", "w70qzZjKn7kl72FJ7BQ8oHoFFzZ0cUmj")
+    get_ana_rank_est_idu("nT3GoChoSilVSWskjjCxEKA1G8R6otAO", "ZWqy9tQXHVzwOvBULX5GS0QWjv7E8Bz8")

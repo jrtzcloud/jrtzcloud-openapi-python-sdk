@@ -26,4 +26,4 @@ def get_grd_bsc(secret_id, secret_key):
 
 
 if __name__ == '__main__':
-    get_grd_bsc("D8xc9JKzEmEvry8XRhkP8JPm5b530pdW", "w70qzZjKn7kl72FJ7BQ8oHoFFzZ0cUmj")
+    get_grd_bsc("nT3GoChoSilVSWskjjCxEKA1G8R6otAO", "ZWqy9tQXHVzwOvBULX5GS0QWjv7E8Bz8")

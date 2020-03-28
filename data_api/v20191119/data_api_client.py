@@ -26,21 +26,21 @@ from data_api.v20191119.models import DataApiResponse
 class DataApiClient(AbstractClient):
     _apiVersion = "2019-11-19"
     _endpoint = "dataapi.investoday.net"
-    _svc_path = "dataapi/consensus"
-    _resource_list = ['grd_bsc',
-                      'est_bsc',
-                      'ind_frcst_hist',
-                      'ind_rank_rv_idu',
-                      'ind_rank_pm',
-                      'ind_rank_eq_idu',
-                      'ana_rank_grd',
-                      'ana_rank_est_idu',
-                      'res_org_rank',
-                      'ind_frcst_iduem',
-                      'ind_frcst_anaem',
-                      'ind_frcst_tianyan',
-                      'idu_cls_ref',
-                      'res_org_ref']
+    _svc_path = "consensus"
+    _resource_list = ['est-bsc',
+                      'grd-bsc',
+                      'ind-frcst-hist',
+                      'idu-cls-ref',
+                      'res-org-ref',
+                      'ana-rank-est-idu',
+                      'ana-rank-grd',
+                      'ind-frcst-anaem',
+                      'ind-frcst-iduem',
+                      'ind-frcst-tianyan',
+                      'ind-rank-eq-idu',
+                      'ind-rank-pm',
+                      'ind-rank-rv-idu',
+                      'res-org-rank']
 
     def __init__(self, secret_id, secret_key, region=None, profile=None):
         # 实例化一个认证对象，入参需要传入Investoday云账户secretId，secretKey
