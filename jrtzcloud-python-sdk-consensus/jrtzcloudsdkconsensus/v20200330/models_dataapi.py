@@ -16,35 +16,8 @@
 from jrtzcloudsdkcore.abstract_model import AbstractModel
 
 
-class DescribeEstBscRequest(AbstractModel):
-    """DescribeEstBsc 请求参数结构体
-    """
-
-    def __init__(self):
-        self.BeginDate = None
-        self.EndDate = None
-        self.OperType = None
-        self.SecCd = None
-        self.IndId = None
-        self.RptYr = None
-        self.Fields = None
-        self.Page = None
-        self.PageCount = None
-
-    def _deserialize(self, params):
-        self.BeginDate = params.get("BeginDate")
-        self.EndDate = params.get("EndDate")
-        self.OperType = params.get("OperType")
-        self.SecCd = params.get("SecCd")
-        self.IndId = params.get("IndId")
-        self.RptYr = params.get("RptYr")
-        self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
-
-
-class DescribeConsensusResponse(AbstractModel):
-    """公共响应体"""
+class DataApiResponse(AbstractModel):
+    """DataApi公共响应体"""
 
     def __init__(self):
         self.TotalCount = None
@@ -67,3 +40,15 @@ class DescribeConsensusResponse(AbstractModel):
         self.NextPage = params.get("NextPage")
         self.LastPage = params.get("LastPage")
         self.HasNextPage = params.get("HasNextPage")
+
+    def print_result(self):
+        print("RequestId: ", self.RequestId)
+        print("Pages: ", self.Pages)
+        print("Page: ", self.Page)
+        print("PageSize: ", self.PageSize)
+        print("Size: ", self.PageSize)
+        print("TotalCount: ", self.TotalCount)
+        print("Data: ", self.Data)
+        print("NextPage: ", self.NextPage)
+        print("LastPage: ", self.LastPage)
+        print("HasNextPage: ", self.HasNextPage)

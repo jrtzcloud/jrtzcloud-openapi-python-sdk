@@ -33,7 +33,7 @@ class Sign(object):
         return base64
 
     @staticmethod
-    def sign_tc3(secret_key, date, service, str2sign):
+    def sign_jc1(secret_key, date, service, str2sign):
         def _hmac_sha256(key, msg):
             return hmac.new(key, msg.encode('utf-8'), hashlib.sha256)
 
