@@ -294,9 +294,9 @@ class AbstractClient(object):
             endpoint = self._endpoint
         return endpoint
 
-    def call(self, action, params, options=None):
+    def call(self, action, path, params, options=None):
         endpoint = self._get_endpoint()
-        # self._requestPath = action
+        self._requestPath = path
         req_inter = RequestInternal(endpoint,
                                     self.profile.httpProfile.reqMethod,
                                     self._requestPath)
