@@ -30,7 +30,7 @@ except ImportError:
     from urllib import urlencode
 
 import common
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 from common.http.request import ApiRequest
 from common.http.request import RequestInternal
 from common.profile.client_profile import ClientProfile
@@ -54,7 +54,7 @@ class AbstractClient(object):
 
     def __init__(self, credential, region=None, profile=None):
         if credential is None:
-            raise CloudSDKException(
+            raise JrtzCloudSDKException(
                 "InvalidCredential", "Credential is None or invalid")
         self.credential = credential
 
@@ -71,7 +71,7 @@ class AbstractClient(object):
         # self.reqMethod = self.profile.httpProfile.reqMethod
         # self.signMethod = self.profile.signMethod
         # self.requestHost = '.'.join((self._service_name, self.profile.httpProfile.endpoint))
-        # # self.apiRequest = ApiRequest(self.requestHost, req_timeout=self.profile.httpProfile.reqTimeout)
+        # self.apiRequest = ApiRequest(self.requestHost, req_timeout=self.profile.httpProfile.reqTimeout)
         # self.token = self.credential.token or ''
 
     def _fix_params(self, params):
@@ -106,7 +106,7 @@ class AbstractClient(object):
                 d.update(self._format_params(key, v))
             return d
 
-        raise CloudSDKException("ClientParamsError", "some params type error")
+        raise JrtzCloudSDKException("ClientParamsError", "some params type error")
 
     def _build_req_inter(self, action, params, req_inter, options=None):
         options = options or {}
@@ -115,7 +115,7 @@ class AbstractClient(object):
         elif self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
             self._build_req_with_old_signature(action, params, req_inter)
         else:
-            raise CloudSDKException("ClientError", "Invalid signature method.")
+            raise JrtzCloudSDKException("ClientError", "Invalid signature method.")
 
     def _build_req_with_old_signature(self, action, params, req):
         params = copy.deepcopy(self._fix_params(params))
@@ -268,7 +268,7 @@ class AbstractClient(object):
     def _check_status(self, resp_inter):
         if resp_inter.status not in [200,201]:
             print(resp_inter.status)
-            # raise CloudSDKException("ServerNetworkError", resp_inter.data)
+            # raise JrtzCloudSDKException("ServerNetworkError", resp_inter.data)
 
     def _format_sign_string(self, params):
         formatParam = {}
@@ -283,7 +283,6 @@ class AbstractClient(object):
         if endpoint is None:
             endpoint = self._endpoint
         endpoint = endpoint .split('//')[1] if '//' in endpoint else endpoint
-        # endpoint = endpoint .split(':')[0] if ':' in endpoint else endpoint
         return endpoint
 
     def _get_service(self):

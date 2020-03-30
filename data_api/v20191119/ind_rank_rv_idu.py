@@ -2,7 +2,7 @@
 # coding:utf-8
 # 相对估值模型数据获取接口
 
-from data_api.v20191119.data_api_client import DataApiClient
+from data_api.v20191119.dataapi_client import DataapiClient
 
 
 class IndRankRvIdu(object):
@@ -12,8 +12,8 @@ class IndRankRvIdu(object):
         self.secret_key = secret_key
 
     def get_data(self, **params):
-        data_api_client = DataApiClient(self.secret_id, self.secret_key)
+        dataapi_client = DataapiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("ind-rank-rv-idu", **params)
+        result = dataapi_client.get_data("ind-rank-rv-idu", **params)
 
         return result

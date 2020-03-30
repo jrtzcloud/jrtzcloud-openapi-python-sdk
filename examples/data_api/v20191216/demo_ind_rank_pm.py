@@ -3,7 +3,7 @@
 # 价格动能模型数据接口调用示例
 
 from data_api.v20191119.ind_rank_pm import IndRankPm
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 def get_ind_rank_pm(secret_id, secret_key):
@@ -19,7 +19,7 @@ def get_ind_rank_pm(secret_id, secret_key):
         }
         result = ind_rank_pm.get_data(**request_parameter)
         result.print_result()
-    except CloudSDKException as e:
+    except JrtzCloudSDKException as e:
         print(e.get_request_id())
         print(e.get_message())
         print(e.get_code())

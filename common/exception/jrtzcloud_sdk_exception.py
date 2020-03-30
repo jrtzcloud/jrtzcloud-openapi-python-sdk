@@ -2,8 +2,8 @@
 
 import sys
 
-class CloudSDKException(Exception):
-    """Investodaycloudapi sdk 异常类"""
+class JrtzCloudSDKException(Exception):
+    """Jrtzcloudapi sdk 异常类"""
 
     def __init__(self, code=None, message=None, requestId=None):
         self.code = code
@@ -11,7 +11,7 @@ class CloudSDKException(Exception):
         self.requestId = requestId
 
     def __str__(self):
-        s = "[CloudSDKException] code:%s message:%s requestId:%s" % (
+        s = "[JrtzCloudSDKException] code:%s message:%s requestId:%s" % (
             self.code, self.message, self.requestId)
         if sys.version_info[0] < 3 and isinstance(s, unicode):
             return s.encode("utf8")

@@ -3,7 +3,7 @@
 # 公司盈利质量数据接口调用示例
 
 from data_api.v20191119.ind_rank_eq_idu import IndRankEqIdu
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 def get_ind_eq_idu(secret_id, secret_key):
@@ -19,7 +19,7 @@ def get_ind_eq_idu(secret_id, secret_key):
         }
         result = ind_eq_idu.get_data(**request_parameter)
         result.print_result()
-    except CloudSDKException as e:
+    except JrtzCloudSDKException as e:
         print(e.get_request_id())
         print(e.get_message())
         print(e.get_code())

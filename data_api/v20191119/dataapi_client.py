@@ -18,12 +18,12 @@ from common.abstract_client import AbstractClient
 from common.profile.http_profile import HttpProfile
 from common.profile.client_profile import ClientProfile
 from common import credential
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 from common.abstract_model import AbstractModel
 from data_api.v20191119.models import DataApiResponse
 
 
-class DataApiClient(AbstractClient):
+class DataapiClient(AbstractClient):
     _apiVersion = "2019-11-19"
     _endpoint = "dataapi.investoday.net"
     _svc_path = "consensus"
@@ -54,7 +54,7 @@ class DataApiClient(AbstractClient):
         if resource_name in self._resource_list:
             return '/'.join(['', self._svc_path, resource_name])
         else:
-            raise CloudSDKException(message="!!! Resource name:%s error! not support !!!" % resource_name)
+            raise JrtzCloudSDKException(message="!!! Resource name:%s error! not support !!!" % resource_name)
 
     def get_data(self, resource_name, request=None, **params):
         try:
@@ -64,16 +64,15 @@ class DataApiClient(AbstractClient):
             body = self.call(api_name, req._serialize())
             response = json.loads(body)
             if response.get("Message"):
-                raise CloudSDKException(code=response.get("Code"),
+                raise JrtzCloudSDKException(code=response.get("Code"),
                                         message=response.get("Message"),
-                                        requestId=response.get("RequestId")
-                                        )
+                                        requestId=response.get("RequestId"))
             model = DataApiResponse()
             model._deserialize(response)
             return model
 
         except Exception as e:
-            if isinstance(e, CloudSDKException):
+            if isinstance(e, JrtzCloudSDKException):
                 raise e
             else:
-                raise CloudSDKException(message=e)
+                raise JrtzCloudSDKException(message=e)

@@ -5,7 +5,7 @@ import hashlib
 import hmac
 import sys
 
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 class Sign(object):
@@ -22,7 +22,7 @@ class Sign(object):
         elif signMethod == 'HmacSHA1':
             digestmod = hashlib.sha1
         else:
-            raise CloudSDKException("signMethod invalid", "signMethod only support (HmacSHA1, HmacSHA256)")
+            raise JrtzCloudSDKException("signMethod invalid", "signMethod only support (HmacSHA1, HmacSHA256)")
 
         hashed = hmac.new(secretKey, signStr, digestmod)
         base64 = binascii.b2a_base64(hashed.digest())[:-1]

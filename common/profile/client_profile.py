@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 from common.profile.http_profile import HttpProfile
 
 
@@ -28,9 +28,10 @@ class ClientProfile(object):
         :param language: Valid choice: en-US, zh-CN.
         :type language: str
         """
+
         self.httpProfile = httpProfile or HttpProfile()
         self.signMethod = signMethod or "JC1-HMAC-SHA256"
         valid_language = ["zh-CN", "en-US"]
         if language not in valid_language:
-            raise CloudSDKException("ClientError", "Language invalid, choices: %s" % valid_language)
+            raise JrtzCloudSDKException("ClientError", "Language invalid, choices: %s" % valid_language)
         self.language = language

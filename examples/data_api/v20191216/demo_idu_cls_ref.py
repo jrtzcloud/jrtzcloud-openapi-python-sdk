@@ -3,7 +3,7 @@
 # 行业分类参数数据接口调用示例
 
 from data_api.v20191119.idu_cls_ref import IduClsRef
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 def get_idu_cls_ref(secret_id, secret_key):
@@ -15,7 +15,7 @@ def get_idu_cls_ref(secret_id, secret_key):
         }
         result = idu_cls_ref.get_data(**request_parameter)
         result.print_result()
-    except CloudSDKException as e:
+    except JrtzCloudSDKException as e:
         print(e.get_request_id())
         print(e.get_message())
         print(e.get_code())

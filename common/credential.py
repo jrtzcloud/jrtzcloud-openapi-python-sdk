@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 class Credential(object):
     def __init__(self, secretId, secretKey, token=None):
@@ -30,15 +30,15 @@ class Credential(object):
                       accordingly, see: https://cloud.Investoday.com/document/product/598/13896
         """
         if secretId is None or secretId.strip() == "":
-            raise CloudSDKException("InvalidCredential", "secret id should not be none or empty")
+            raise JrtzCloudSDKException("InvalidCredential", "secret id should not be none or empty")
         if secretId.strip() != secretId:
-            raise CloudSDKException("InvalidCredential", "secret id should not contain spaces")
+            raise JrtzCloudSDKException("InvalidCredential", "secret id should not contain spaces")
         self.secretId = secretId
 
         if secretKey is None or secretKey.strip() == "":
-            raise CloudSDKException("InvalidCredential", "secret key should not be none or empty")
+            raise JrtzCloudSDKException("InvalidCredential", "secret key should not be none or empty")
         if secretKey.strip() != secretKey:
-            raise CloudSDKException("InvalidCredential", "secret key should not contain spaces")
+            raise JrtzCloudSDKException("InvalidCredential", "secret key should not contain spaces")
         self.secretKey = secretKey
 
         self.token = token

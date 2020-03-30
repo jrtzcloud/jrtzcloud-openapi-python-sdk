@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 # 导入对应产品模块的client models。
 from blten.v20191120.blten_client import BltenClient
 import json
@@ -161,5 +161,5 @@ if __name__ == '__main__':
         # # param = param if guid is None else None
         # ret = client.get_data('set_project',guid=guid,param=param,start=start,stop=stop)
         # print(ret)
-    except CloudSDKException as err:
+    except JrtzCloudSDKException as err:
         print(err)

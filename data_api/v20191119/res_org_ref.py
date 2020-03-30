@@ -2,7 +2,7 @@
 # coding:utf-8
 # 研究机构接口参数数据获取接口
 
-from data_api.v20191119.data_api_client import DataApiClient
+from data_api.v20191119.dataapi_client import DataapiClient
 
 
 class ResOrgRef(object):
@@ -12,8 +12,8 @@ class ResOrgRef(object):
         self.secret_key = secret_key
 
     def get_data(self, **params):
-        data_api_client = DataApiClient(self.secret_id, self.secret_key)
+        dataapi_client = DataapiClient(self.secret_id, self.secret_key)
 
-        result = data_api_client.get_data("res-org-ref", **params)
+        result = dataapi_client.get_data("res-org-ref", **params)
 
         return result

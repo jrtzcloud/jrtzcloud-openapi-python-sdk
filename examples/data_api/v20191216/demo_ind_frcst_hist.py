@@ -3,7 +3,7 @@
 # 一致预期历史数据接口调用示例
 
 from data_api.v20191119.ind_frcst_hist import IndFrcstHist
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 def get_ind_frcst_hist(secret_id, secret_key):
@@ -20,7 +20,7 @@ def get_ind_frcst_hist(secret_id, secret_key):
         }
         result = ind_frcst_hist.get_data(**request_parameter)
         result.print_result()
-    except CloudSDKException as e:
+    except JrtzCloudSDKException as e:
         print(e.get_request_id())
         print(e.get_message())
         print(e.get_code())

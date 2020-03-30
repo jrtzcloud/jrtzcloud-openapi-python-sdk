@@ -5,7 +5,7 @@ from distutils.extension import Extension
 
 extensions = []
 extensions.append(Extension('BltenClient', ['blten/v20191120/blten_client']))
-extensions.append(Extension('CloudSDKException', ['common/exception/jrtzcloud_sdk_exception.py']))
+extensions.append(Extension('JrtzCloudSDKException', ['common/exception/jrtzcloud_sdk_exception.py']))
 
 setup(
     ext_modules=cythonize(extensions, compiler_directives={'language_level': 2}),

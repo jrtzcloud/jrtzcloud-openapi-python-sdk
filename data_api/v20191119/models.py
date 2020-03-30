@@ -17,6 +17,7 @@ from common.abstract_model import AbstractModel
 
 
 class DataApiResponse(AbstractModel):
+    """DataApi公共响应体"""
 
     def __init__(self):
         self.TotalCount = None

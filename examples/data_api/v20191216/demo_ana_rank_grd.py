@@ -3,7 +3,7 @@
 # 天眼分析师评级排名数据接口调用示例
 
 from data_api.v20191119.ana_rank_grd import AnaRankGrd
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 def get_ana_rank_grd(secret_id, secret_key):
@@ -19,7 +19,7 @@ def get_ana_rank_grd(secret_id, secret_key):
         }
         result = ana_rank_grd.get_data(**request_parameter)
         result.print_result()
-    except CloudSDKException as e:
+    except JrtzCloudSDKException as e:
         print(e.get_request_id())
         print(e.get_message())
         print(e.get_code())

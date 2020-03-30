@@ -3,7 +3,7 @@
 # 盈利预测数据接口调用示例
 
 from data_api.v20191119.est_bsc import EstBsc
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 def get_est_bsc(secret_id, secret_key):
@@ -20,7 +20,7 @@ def get_est_bsc(secret_id, secret_key):
         }
         result = est_bss.get_data(**request_parameter)
         result.print_result()
-    except CloudSDKException as e:
+    except JrtzCloudSDKException as e:
         print(e.get_request_id())
         print(e.get_message())
         print(e.get_code())

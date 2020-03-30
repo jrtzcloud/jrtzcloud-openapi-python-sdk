@@ -3,7 +3,7 @@
 # 研究机构整体实力得分数据接口调用示例
 
 from data_api.v20191119.res_org_rank import ResOrgRank
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 def get_res_org_rank(secret_id, secret_key):
@@ -19,7 +19,7 @@ def get_res_org_rank(secret_id, secret_key):
         }
         result = res_org_rank.get_data(**request_parameter)
         result.print_result()
-    except CloudSDKException as e:
+    except JrtzCloudSDKException as e:
         print(e.get_request_id())
         print(e.get_message())
         print(e.get_code())

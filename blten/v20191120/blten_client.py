@@ -14,7 +14,7 @@
 # limitations under the License.
 
 import json
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 from common.abstract_client import AbstractClient
 from common.abstract_model import AbstractModel
 from common import credential
@@ -51,7 +51,7 @@ class BltenClient(AbstractClient):
 
             return '/'.join(['', svc_path, resource_name])
         else:
-            raise CloudSDKException(message="!!! Resource name:%s error! not support !!!" % resource_name)
+            raise JrtzCloudSDKException(message="!!! Resource name:%s error! not support !!!" % resource_name)
 
     def req_call(self, resource_name, request=None, method=None, **params):
         """
@@ -71,7 +71,7 @@ class BltenClient(AbstractClient):
                 return
             # print(1111,response)
             # if response.get("message"):  #router error
-            #     raise CloudSDKException(message=response.get("message"))
+            #     raise JrtzCloudSDKException(message=response.get("message"))
 
             if response.get('Instances'):
 
@@ -84,9 +84,9 @@ class BltenClient(AbstractClient):
                 return model
             elif response.get("Message"):
                 return response
-            raise CloudSDKException(message=response)
+            raise JrtzCloudSDKException(message=response)
         except Exception as e:
-            if isinstance(e, CloudSDKException):
+            if isinstance(e, JrtzCloudSDKException):
                 raise e
             else:
-                raise CloudSDKException(message=e)
+                raise JrtzCloudSDKException(message=e)

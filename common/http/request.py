@@ -10,7 +10,7 @@ except ImportError:
     from httplib import HTTPConnection, BadStatusLine, HTTPSConnection
     from urlparse import urlparse
 
-from common.exception.jrtzcloud_sdk_exception import CloudSDKException
+from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 class ProxyHTTPSConnection(HTTPSConnection):
@@ -110,13 +110,12 @@ class ApiRequest(object):
             req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
             self.conn.request(req_inter.method, req_inter_url,
                               None, req_inter.header)
-        # elif req_inter.method == 'POST':
-        elif req_inter.method in ['POST', 'PUT', 'PATCH']:
+        elif req_inter.method in ['POST', 'PUT', 'PATCH', 'DELETE']:
             self.conn.request(req_inter.method, req_inter.uri,
                               req_inter.data, req_inter.header)
         else:
-            raise CloudSDKException(
-                "ClientParamsError", 'Method only support (GET, POST,PUT,PATCH)')
+            raise JrtzCloudSDKException(
+                "ClientParamsError", 'Method only support (GET,POST,PUT,PATCH,DELETE)')
 
     def send_request(self, req_inter):
         try:
@@ -145,7 +144,7 @@ class ApiRequest(object):
             return resp_inter
         except Exception as e:
             self.conn.close()
-            raise CloudSDKException("ClientNetworkError", str(e))
+            raise JrtzCloudSDKException("ClientNetworkError", str(e))
 
 
 class RequestInternal(object):
