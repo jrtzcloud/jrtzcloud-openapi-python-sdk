@@ -49,7 +49,7 @@ class AbstractClient(object):
     _apiVersion = ''
     _endpoint = ''
     _region = 'ap-shenzhen'
-    _sdkVersion = 'SDK_PYTHON_%s' % common.__version__
+    _sdkVersion = 'SDK_PYTHON_%s' % jrtzcloudsdkcore.__version__
     _default_content_type = _form_urlencoded_content
 
     def __init__(self, credential, region=None, profile=None):
