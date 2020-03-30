@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from common.abstract_model import AbstractModel
+from jrtzcloudsdkcore.abstract_model import AbstractModel
 
 
 class DataApiResponse(AbstractModel):
