@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
+from jrtzcloudsdkcore.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 class Credential(object):
     def __init__(self, secretId, secretKey, token=None):

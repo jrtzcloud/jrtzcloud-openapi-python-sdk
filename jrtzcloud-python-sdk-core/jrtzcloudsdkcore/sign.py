@@ -5,7 +5,7 @@ import hashlib
 import hmac
 import sys
 
-from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
+from jrtzcloudsdkcore.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 class Sign(object):

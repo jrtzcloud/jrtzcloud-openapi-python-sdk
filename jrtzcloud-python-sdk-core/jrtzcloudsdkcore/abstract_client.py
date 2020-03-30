@@ -29,12 +29,12 @@ try:
 except ImportError:
     from urllib import urlencode
 
-import common
-from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
-from common.http.request import ApiRequest
-from common.http.request import RequestInternal
-from common.profile.client_profile import ClientProfile
-from common.sign import Sign
+import jrtzcloudsdkcore
+from jrtzcloudsdkcore.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
+from jrtzcloudsdkcore.http.request import ApiRequest
+from jrtzcloudsdkcore.http.request import RequestInternal
+from jrtzcloudsdkcore.profile.client_profile import ClientProfile
+from jrtzcloudsdkcore.sign import Sign
 
 warnings.filterwarnings("ignore")
 

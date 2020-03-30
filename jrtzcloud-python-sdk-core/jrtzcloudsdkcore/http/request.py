@@ -10,7 +10,7 @@ except ImportError:
     from httplib import HTTPConnection, BadStatusLine, HTTPSConnection
     from urlparse import urlparse
 
-from common.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
+from jrtzcloudsdkcore.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 
 
 class ProxyHTTPSConnection(HTTPSConnection):
