@@ -1,7 +1,2 @@
 .idea
-data_api/__pycache__/
-data_api/v20191119/__pycache__/
-common/__pycache__
-common/http/__pycache__
-common/profile/__pycache__
-common/exception/__pycache__
+__pycache__
