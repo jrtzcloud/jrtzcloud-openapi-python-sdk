@@ -31,7 +31,7 @@ class HttpProfile(object):
         self.apiVersion = apiVersion
         self.region = region
         self.reqTimeout = 60 if reqTimeout is None else reqTimeout
-        self.reqMethod = "GET" if reqMethod is None else reqMethod
+        self.reqMethod = "POST" if reqMethod is None else reqMethod
         self.protocol = protocol
         self.keepAlive = keepAlive
 
