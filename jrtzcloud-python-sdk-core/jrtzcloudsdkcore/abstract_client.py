@@ -161,7 +161,8 @@ class AbstractClient(object):
             content_type = _multipart_content
         req.header["Content-Type"] = content_type
         endpoint = self._get_endpoint()
-        service = self._get_service()
+        #service = endpoint.split('.')[0]
+        service = req.uri.split('/', 2)[1]
         timestamp = int(time.time())
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
 
@@ -284,9 +285,6 @@ class AbstractClient(object):
             endpoint = self._endpoint
         endpoint = endpoint .split('//')[1] if '//' in endpoint else endpoint
         return endpoint
-
-    def _get_service(self):
-        return self._svc_path
 
     def get_endpoint(self):
         endpoint = self.profile.httpProfile.endpoint
