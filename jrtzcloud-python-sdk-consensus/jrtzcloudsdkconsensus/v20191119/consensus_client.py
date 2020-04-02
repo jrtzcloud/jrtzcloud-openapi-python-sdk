@@ -100,45 +100,25 @@ class ConsensusClient(AbstractClient):
         return self._request("DescribeIndRankEqIdu", "/consensus/ind-rank-eq-idu", request)
 
     def DescribeIndRankPm(self, request):
-        """本接口（DescribeIndRankPm）用于查询公司盈利质量数据列表
+        """本接口（DescribeIndRankPm）用于查询价格动能数据列表
         :param request: Request instance for DescribeIndRankPm.
         :type request: :class:`jrtzcloudsdkconsensus.v20191119.models.DescribeIndRankPmRequest`
         """
         return self._request("DescribeIndRankPm", "/consensus/ind-rank-pm", request)
 
+    def DescribeIndRankRvIdu(self, request):
+        """本接口（DescribeIndRankRvIdu）用于查询相对估值模型数据列表
+        :param request: Request instance for DescribeIndRankRvIdu.
+        :type request: :class:`jrtzcloudsdkconsensus.v20191119.models.DescribeIndRankRvIduRequest`
+        """
+        return self._request("DescribeIndRankRvIdu", "/consensus/ind-rank-rv-idu", request)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def DescribeResOrgRank(self, request):
+        """本接口（DescribeResOrgRank）用于查询研究机构整体实力得分数据列表
+        :param request: Request instance for DescribeResOrgRank.
+        :type request: :class:`jrtzcloudsdkconsensus.v20191119.models.DescribeResOrgRankRequest`
+        """
+        return self._request("DescribeResOrgRank", "/consensus/res-org-rank", request)
 
 
 

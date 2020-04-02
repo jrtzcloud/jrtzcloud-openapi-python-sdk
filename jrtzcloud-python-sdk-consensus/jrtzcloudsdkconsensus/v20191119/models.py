@@ -312,6 +312,52 @@ class DescribeIndRankPmRequest(AbstractModel):
         self.PageCount = params.get("PageCount")
 
 
+class DescribeIndRankRvIduRequest(AbstractModel):
+    """DescribeIndRankRvIdu 请求参数结构体
+    """
+
+    def __init__(self):
+        self.BeginDate = None
+        self.EndDate = None
+        self.SecCd = None
+        self.OperType = None
+        self.Fields = None
+        self.Page = None
+        self.PageCount = None
+
+    def _deserialize(self, params):
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        self.SecCd = params.get("SecCd")
+        self.OperType = params.get("OperType")
+        self.Fields = params.get("Fields")
+        self.Page = params.get("Page")
+        self.PageCount = params.get("PageCount")
+
+
+class DescribeResOrgRankRequest(AbstractModel):
+    """DescribeResOrgRank 请求参数结构体
+    """
+
+    def __init__(self):
+        self.BeginDate = None
+        self.EndDate = None
+        self.OrgCl = None
+        self.Fields = None
+        self.Page = None
+        self.PageCount = None
+
+    def _deserialize(self, params):
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        self.OrgCl = params.get("OrgCl")
+        self.Fields = params.get("Fields")
+        self.Page = params.get("Page")
+        self.PageCount = params.get("PageCount")
+
+
+
+
 
 
 
