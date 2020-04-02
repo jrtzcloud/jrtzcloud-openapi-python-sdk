@@ -64,6 +64,19 @@ class ConsensusClient(AbstractClient):
         """
         return self._request("DescribeAnaRankEstIdu", "/consensus/ana-rank-est-idu", request)
 
+    def DescribeAnaRankGrd(self, request):
+        """本接口（DescribeAnaRankGrd）用于查询天眼分析师评级排名数据列表接口。
+        :param request: Request instance for DescribeAnaRankGrd.
+        :type request: :class:`jrtzcloudsdkconsensus.v20191119.models.DescribeAnaRankGrdRequest`
+        """
+        return self._request("DescribeAnaRankGrd", "/consensus/ana-rank-grd", request)
+
+    def DescribeIndFrcstAnaem(self, request):
+        """本接口（DescribeIndFrcstAnaem）用于查询分析师动能数据列表接口。
+        :param request: Request instance for DescribeIndFrcstAnaem.
+        :type request: :class:`jrtzcloudsdkconsensus.v20191119.models.DescribeIndFrcstAnaemRequest`
+        """
+        return self._request("DescribeIndFrcstAnaem", "/consensus/ind-frcst-anaem", request)
 
 
 

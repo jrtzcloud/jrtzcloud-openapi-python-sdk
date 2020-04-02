@@ -138,7 +138,7 @@ class DescribeResOrgRefRequest(AbstractModel):
 
 
 class DescribeAnaRankEstIduRequest(AbstractModel):
-    """DescribeAnaRankEstIduRequest 请求参数结构体
+    """DescribeAnaRankEstIdu 请求参数结构体
     """
 
     def __init__(self):
@@ -157,6 +157,58 @@ class DescribeAnaRankEstIduRequest(AbstractModel):
         self.IduCl = params.get("IduCl")
         self.IduId = params.get("IduId")
         self.AnaNm = params.get("AnaNm")
+        self.Fields = params.get("Fields")
+        self.Page = params.get("Page")
+        self.PageCount = params.get("PageCount")
+
+
+class DescribeAnaRankGrdRequest(AbstractModel):
+    """DescribeAnaRankEstIdu 请求参数结构体
+    """
+
+    def __init__(self):
+        self.BeginDate = None
+        self.EndDate = None
+        self.IduCl = None
+        self.IduId = None
+        self.AnaNm = None
+        self.Fields = None
+        self.Page = None
+        self.PageCount = None
+
+    def _deserialize(self, params):
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        self.IduCl = params.get("IduCl")
+        self.IduId = params.get("IduId")
+        self.AnaNm = params.get("AnaNm")
+        self.Fields = params.get("Fields")
+        self.Page = params.get("Page")
+        self.PageCount = params.get("PageCount")
+
+
+class DescribeIndFrcstAnaemRequest(AbstractModel):
+    """DescribeIndFrcstAnaem 请求参数结构体
+    """
+
+    def __init__(self):
+        self.BeginDate = None
+        self.EndDate = None
+        self.SecCd = None
+        self.OperType = None
+        self.RptRang = None
+        self.RptYr = None
+        self.Fields = None
+        self.Page = None
+        self.PageCount = None
+
+    def _deserialize(self, params):
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        self.SecCd = params.get("SecCd")
+        self.OperType = params.get("OperType")
+        self.RptRang = params.get("RptRang")
+        self.RptYr = params.get("RptYr")
         self.Fields = params.get("Fields")
         self.Page = params.get("Page")
         self.PageCount = params.get("PageCount")
