@@ -4,7 +4,7 @@ import os
 from jrtzcloudsdkcore import credential
 from jrtzcloudsdkcore.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 # 导入对应产品模块的client models。
-from jrtzcloudsdkconsensus.v20200330 import consensus_client, models
+from jrtzcloudsdkconsensus.v20191119 import consensus_client, models
 
 # 导入可选配置类
 from jrtzcloudsdkcore.profile.client_profile import ClientProfile
@@ -17,7 +17,7 @@ try:
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     httpProfile = HttpProfile()
-    httpProfile.reqMethod = "GET"  # 默认为post请求
+    httpProfile.reqMethod = "GET"  # 请求方法(默认为post请求)
     httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
     httpProfile.endpoint = "dataapi.investoday.net"  # 指定接入地域域名(默认就近接入)
 

@@ -31,25 +31,23 @@ try:
     client = consensus_client.ConsensusClient(cred, "ap-shenzhen", clientProfile)
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
-    req = models.DescribeEstBscRequest()
+    req = models.DescribeAnaRankEstIduRequest()
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    req.BeginDate = '20190429'
+    req.BeginDate = '20140429'
     req.EndDate = '20190528'
-    req.SecCd = '000300'
-    req.OperType = '1'
-    req.IndId = '0'
+    req.IduId = "A"
+    req.IduCl = "INDUS2_CL"
     req.Page = '1'
     req.PageCount = '10'
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
-        "BeginDate": "20190429",
-        "EndDate": "20190529",
-        "SecCd": "000300",
-        "OperType": "1",
-        "IndId": "0",
+        "BeginDate": "20140429",
+        "EndDate": "20190528",
+        "IduId": "A",
+        "IduCl": "INDUS2_CL",
         "Page": "1",
         "PageCount": "10"
     }'''
@@ -57,7 +55,7 @@ try:
 
     # 通过client对象调用方法发起请求。注意请求方法名与请求对象是对应的。
     # 返回的resp是一个Response类的实例，与请求对象对应。
-    resp = client.DescribeGrdBsc(req)
+    resp = client.DescribeAnaRankEstIdu(req)
 
     # 输出json格式的字符串回包
     print(resp.to_json_string(indent=2))
