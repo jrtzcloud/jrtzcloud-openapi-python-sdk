@@ -92,6 +92,23 @@ class ConsensusClient(AbstractClient):
         """
         return self._request("DescribeIndFrcstTianyan", "/consensus/ind-frcst-tianyan", request)
 
+    def DescribeIndRankEqIdu(self, request):
+        """本接口（DescribeIndRankEqIdu）用于查询公司盈利质量数据列表
+        :param request: Request instance for DescribeIndRankEqIdu.
+        :type request: :class:`jrtzcloudsdkconsensus.v20191119.models.DescribeIndRankEqIduRequest`
+        """
+        return self._request("DescribeIndRankEqIdu", "/consensus/ind-rank-eq-idu", request)
+
+    def DescribeIndRankPm(self, request):
+        """本接口（DescribeIndRankPm）用于查询公司盈利质量数据列表
+        :param request: Request instance for DescribeIndRankPm.
+        :type request: :class:`jrtzcloudsdkconsensus.v20191119.models.DescribeIndRankPmRequest`
+        """
+        return self._request("DescribeIndRankPm", "/consensus/ind-rank-pm", request)
+
+
+
+
 
 
 

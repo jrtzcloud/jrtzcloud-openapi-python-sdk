@@ -266,6 +266,51 @@ class DescribeIndFrcstTianyanRequest(AbstractModel):
         self.PageCount = params.get("PageCount")
 
 
+class DescribeIndRankEqIduRequest(AbstractModel):
+    """DescribeIndRankEqIdu 请求参数结构体
+    """
+
+    def __init__(self):
+        self.BeginDate = None
+        self.EndDate = None
+        self.SecCd = None
+        self.OperType = None
+        self.Fields = None
+        self.Page = None
+        self.PageCount = None
+
+    def _deserialize(self, params):
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        self.SecCd = params.get("SecCd")
+        self.OperType = params.get("OperType")
+        self.Fields = params.get("Fields")
+        self.Page = params.get("Page")
+        self.PageCount = params.get("PageCount")
+
+
+class DescribeIndRankPmRequest(AbstractModel):
+    """DescribeIndRankPm 请求参数结构体
+    """
+
+    def __init__(self):
+        self.BeginDate = None
+        self.EndDate = None
+        self.SecCd = None
+        self.OperType = None
+        self.Fields = None
+        self.Page = None
+        self.PageCount = None
+
+    def _deserialize(self, params):
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        self.SecCd = params.get("SecCd")
+        self.OperType = params.get("OperType")
+        self.Fields = params.get("Fields")
+        self.Page = params.get("Page")
+        self.PageCount = params.get("PageCount")
+
 
 
 
