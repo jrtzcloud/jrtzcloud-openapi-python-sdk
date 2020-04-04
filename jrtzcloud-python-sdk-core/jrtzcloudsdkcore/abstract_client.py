@@ -44,6 +44,7 @@ _form_urlencoded_content = 'application/x-www-form-urlencoded;charset=utf-8'
 _multipart_content = 'multipart/form-data'
 
 class AbstractClient(object):
+    _requestMethod = 'POST'
     _requestPath = '/'
     _params = {}
     _apiVersion = ''
@@ -282,11 +283,12 @@ class AbstractClient(object):
             endpoint = self._endpoint
         return endpoint
 
-    def call(self, action, path, params, options=None):
+    def call(self, action, method, path, params, options=None):
         endpoint = self._get_endpoint()
         self._requestPath = path
+        self._requestMethod = method or self.profile.httpProfile.reqMethod or 'POST';
         req_inter = RequestInternal(endpoint,
-                                    self.profile.httpProfile.reqMethod,
+                                    self._requestMethod,
                                     self._requestPath)
         self._build_req_inter(action, params, req_inter, options)
         resp_inter = self.request.send_request(req_inter)
