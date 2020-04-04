@@ -1,9 +1,5 @@
 # 今日投资云开发者 Python 工具套件
 
-[![Build Status](https://travis-ci.org/aliyun/aliyun-openapi-python-sdk.svg?branch=master)](https://travis-ci.org/aliyun/aliyun-openapi-python-sdk)
-[![Build status](https://ci.appveyor.com/api/projects/status/ddq0kwqqbep9jasi/branch/master?svg=true)](https://ci.appveyor.com/project/aliyun/aliyun-openapi-python-sdk/branch/master)
-[![codecov](https://codecov.io/gh/aliyun/aliyun-openapi-python-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/aliyun/aliyun-openapi-python-sdk)
-
 欢迎使用今日投资云开发者工具套件（SDK）。今日投资云 Python SDK 让您不用复杂编程即可访问云服务器、云监控等多个今日投资云服务。这里向您介绍如何获取今日投资云 Python SDK 并开始调用。
 
 如果您在使用 SDK 的过程中遇到任何问题，欢迎前往 [今日投资云 SDK 问答社区](https://help.test.investoday.net) 提问，提问前请阅读 [提问引导](https://help.test.investoday.net) 。亦可在当前 GitHub 提交 Issues。

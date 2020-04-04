@@ -1,2 +1,5 @@
 .idea
 __pycache__
+dist
+jrtzcloud_python_sdk_core.egg-info
+jrtzcloud_python_sdk_consensus.egg-info
