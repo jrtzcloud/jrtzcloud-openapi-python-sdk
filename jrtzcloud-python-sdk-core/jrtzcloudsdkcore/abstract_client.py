@@ -40,28 +40,25 @@ warnings.filterwarnings("ignore")
 
 _json_content = 'application/json;charset=utf-8'
 _json_patch_content = 'application/json-patch+json;charset=utf-8'
-_multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded;charset=utf-8'
+_multipart_content = 'multipart/form-data'
 
 class AbstractClient(object):
     _requestPath = '/'
     _params = {}
     _apiVersion = ''
     _endpoint = ''
-    _region = 'ap-shenzhen'
     _sdkVersion = 'SDK_PYTHON_%s' % jrtzcloudsdkcore.__version__
     _default_content_type = _form_urlencoded_content
 
-    def __init__(self, credential, region=None, profile=None):
+    def __init__(self, credential, profile=None, region='ap-shenzhen'):
         if credential is None:
             raise JrtzCloudSDKException(
                 "InvalidCredential", "Credential is None or invalid")
         self.credential = credential
-
-        self.profile = profile or ClientProfile()
-        self.apiVersion = self.profile.httpProfile.apiVersion or self._apiVersion
-        self.region = region or self.profile.httpProfile.region or self._region
-        self.request = ApiRequest(self.get_endpoint(), self.profile.httpProfile.reqTimeout)
+        self.region = region
+        self.profile = ClientProfile() if profile is None else profile
+        self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
 
@@ -120,7 +117,7 @@ class AbstractClient(object):
     def _build_req_with_old_signature(self, action, params, req):
         params = copy.deepcopy(self._fix_params(params))
         params['Action'] = action[0].upper() + action[1:]
-        # params['RequestClient'] = self._sdkVersion
+        params['RequestClient'] = self._sdkVersion
         params['Nonce'] = random.randint(1, sys.maxsize)
         params['Timestamp'] = int(time.time())
         params['Version'] = self.apiVersion
@@ -167,18 +164,18 @@ class AbstractClient(object):
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
 
         req.header["Host"] = endpoint
-        # req.header["X-TC-Action"] = action[0].upper() + action[1:]
-        # req.header["X-TC-RequestClient"] = self._sdkVersion
+        req.header["X-JC-Action"] = action[0].upper() + action[1:]
+        req.header["X-JC-RequestClient"] = self._sdkVersion
         req.header["X-JC-Timestamp"] = timestamp
         req.header["X-JC-Version"] = self.apiVersion
-        # if self.profile.unsignedPayload is True:
-        #     req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
+        if self.profile.unsignedPayload is True:
+            req.header["X-JC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
         if self.region:
             req.header['X-JC-Region'] = self.region
-        # if self.credential.token:
-        #     req.header['X-TC-Token'] = self.credential.token
-        # if self.profile.language:
-        #     req.header['X-TC-Language'] = self.profile.language
+        if self.credential.token:
+            req.header['X-JC-Token'] = self.credential.token
+        if self.profile.language:
+            req.header['X-JC-Language'] = self.profile.language
 
         signature = self._get_jc1_signature(params, req, date, service, options)
 
@@ -210,7 +207,7 @@ class AbstractClient(object):
 
             payload = req.data
 
-        # if req.header.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
+        # if req.header.get("X-JC-Content-SHA256") == "UNSIGNED-PAYLOAD":
         #     payload = "UNSIGNED-PAYLOAD"
 
         if sys.version_info[0] == 3 and isinstance(payload, type("")):
@@ -267,7 +264,7 @@ class AbstractClient(object):
         return body
 
     def _check_status(self, resp_inter):
-        if resp_inter.status not in [200,201]:
+        if resp_inter.status < 200 or resp_inter.status >= 300:
             print(resp_inter.status)
             # raise JrtzCloudSDKException("ServerNetworkError", resp_inter.data)
 
@@ -283,13 +280,6 @@ class AbstractClient(object):
         endpoint = self.profile.httpProfile.endpoint
         if endpoint is None:
             endpoint = self._endpoint
-        endpoint = endpoint .split('//')[1] if '//' in endpoint else endpoint
-        return endpoint
-
-    def get_endpoint(self):
-        endpoint = self.profile.httpProfile.endpoint
-        if endpoint is None:
-            endpoint = self._endpoint
         return endpoint
 
     def call(self, action, path, params, options=None):
@@ -299,7 +289,6 @@ class AbstractClient(object):
                                     self.profile.httpProfile.reqMethod,
                                     self._requestPath)
         self._build_req_inter(action, params, req_inter, options)
-        # print(req_inter)
         resp_inter = self.request.send_request(req_inter)
         self._check_status(resp_inter)
         data = resp_inter.data

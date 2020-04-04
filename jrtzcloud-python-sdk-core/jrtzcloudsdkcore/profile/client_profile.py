@@ -18,10 +18,10 @@ from jrtzcloudsdkcore.profile.http_profile import HttpProfile
 class ClientProfile(object):
     unsignedPayload = False
 
-    def __init__(self, signMethod=None, httpProfile=None, language="zh-CN"):
+    def __init__(self, httpProfile=None, signMethod="JC1-HMAC-SHA256",  language="zh-CN"):
         """SDK profile.
 
-        :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256
+        :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256, JC1-HMAC-SHA256
         :type signMethod: str
         :param httpProfile: The http profile
         :type httpProfile: :class:`HttpProfile`
@@ -29,8 +29,8 @@ class ClientProfile(object):
         :type language: str
         """
 
-        self.httpProfile = httpProfile or HttpProfile()
-        self.signMethod = signMethod or "JC1-HMAC-SHA256"
+        self.httpProfile = HttpProfile() if httpProfile is None else httpProfile
+        self.signMethod = "JC1-HMAC-SHA256" if signMethod is None else signMethod
         valid_language = ["zh-CN", "en-US"]
         if language not in valid_language:
             raise JrtzCloudSDKException("ClientError", "Language invalid, choices: %s" % valid_language)

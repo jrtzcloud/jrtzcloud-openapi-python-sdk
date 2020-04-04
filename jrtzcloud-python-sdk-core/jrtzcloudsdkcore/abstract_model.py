@@ -28,8 +28,8 @@ class AbstractModel(object):
                 for k in d:
                     r = dfs(d[k])
                     if allow_none or r is not None:
-                        ret[k] = r
-                        # ret[k[0].upper() + k[1:]] = r
+                        #ret[k] = r
+                        ret[k[0].upper() + k[1:]] = r
                 return ret
             elif isinstance(obj, list):
                 return [dfs(o) for o in obj if allow_none or dfs(o) is not None]
@@ -39,8 +39,9 @@ class AbstractModel(object):
         return dfs(self)
 
     def _deserialize(self, params):
-        for k,v in params.items():
-            setattr(self,k,v)
+        return None
+        # for k,v in params.items():
+        #     setattr(self,k,v)
 
     def to_json_string(self, *args, **kwargs):
         """Serialize obj to a JSON formatted str, ensure_ascii is False by default"""
