@@ -37,12 +37,8 @@ from jrtzcloudsdkconsensus.v20191119 import consensus_client, models
 # 导入可选配置类
 from jrtzcloudsdkcore.profile.client_profile import ClientProfile
 from jrtzcloudsdkcore.profile.http_profile import HttpProfile
-try:
-    # 实例化一个认证对象，
-    cred = credential.Credential(
-        os.environ.get("JRTZCLOUD_SECRET_ID"),
-        os.environ.get("JRTZCLOUD_SECRET_KEY"))
 
+try:
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     httpProfile = HttpProfile()
     httpProfile.reqMethod = "GET"  # 请求方法(默认为post请求)
@@ -58,9 +54,9 @@ try:
     # 实例化要请求产品的client对象，入参需要传入今日投资云账户secretId，secretKey, clientProfile是可选的。
     client = consensus_client.ConsensusClient(
         "<your-access-key-id>",
-        "<your-access-key-secret>"
-        , clientProfile, 
-        "<your-region-id>"
+        "<your-access-key-secret>",
+        "<your-region-id>",
+        clientProfile
     );
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
