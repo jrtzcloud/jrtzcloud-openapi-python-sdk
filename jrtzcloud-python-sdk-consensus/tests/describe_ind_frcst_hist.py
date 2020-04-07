@@ -57,7 +57,7 @@ try:
 
     # 通过client对象调用方法发起请求。注意请求方法名与请求对象是对应的。
     # 返回的resp是一个Response类的实例，与请求对象对应。
-    resp = client.DescribeGrdBsc(req)
+    resp = client.DescribeIndFrcstHist(req)
 
     # 输出json格式的字符串回包
     print(resp.to_json_string(indent=2))

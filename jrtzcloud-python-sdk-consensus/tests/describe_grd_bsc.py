@@ -31,7 +31,7 @@ try:
     client = consensus_client.ConsensusClient(os.environ.get("JRTZCLOUD_SECRET_ID"), os.environ.get("JRTZCLOUD_SECRET_KEY"))
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
-    req = models.DescribeEstBscRequest()
+    req = models.DescribeGrdBscRequest()
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
