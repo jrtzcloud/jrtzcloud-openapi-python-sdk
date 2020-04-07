@@ -30,6 +30,7 @@ except ImportError:
     from urllib import urlencode
 
 import jrtzcloudsdkcore
+from jrtzcloudsdkcore import credential
 from jrtzcloudsdkcore.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 from jrtzcloudsdkcore.http.request import ApiRequest
 from jrtzcloudsdkcore.http.request import RequestInternal
@@ -52,11 +53,8 @@ class AbstractClient(object):
     _sdkVersion = 'SDK_PYTHON_%s' % jrtzcloudsdkcore.__version__
     _default_content_type = _form_urlencoded_content
 
-    def __init__(self, credential, profile=None, region='ap-shenzhen'):
-        if credential is None:
-            raise JrtzCloudSDKException(
-                "InvalidCredential", "Credential is None or invalid")
-        self.credential = credential
+    def __init__(self, secretId, secretKey, profile=None, region='ap-shenzhen'):
+        self.credential = credential.Credential(secretId, secretKey)
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
         self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
@@ -121,7 +119,7 @@ class AbstractClient(object):
         params['RequestClient'] = self._sdkVersion
         params['Nonce'] = random.randint(1, sys.maxsize)
         params['Timestamp'] = int(time.time())
-        params['Version'] = self.apiVersion
+        params['Version'] = self._apiVersion
 
         if self.region:
             params['Region'] = self.region
@@ -168,7 +166,7 @@ class AbstractClient(object):
         req.header["X-JC-Action"] = action[0].upper() + action[1:]
         req.header["X-JC-RequestClient"] = self._sdkVersion
         req.header["X-JC-Timestamp"] = timestamp
-        req.header["X-JC-Version"] = self.apiVersion
+        req.header["X-JC-Version"] = self._apiVersion
         if self.profile.unsignedPayload is True:
             req.header["X-JC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
         if self.region:
