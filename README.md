@@ -30,9 +30,6 @@ pip install jrtzcloud-python-sdk-consensus # 安装管理 consensus SDK
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-
-from jrtzcloudsdkcore import credential
 from jrtzcloudsdkcore.exception.jrtzcloud_sdk_exception import JrtzCloudSDKException
 # 导入对应产品模块的client models。
 from jrtzcloudsdkconsensus.v20191119 import consensus_client, models
@@ -41,7 +38,7 @@ from jrtzcloudsdkconsensus.v20191119 import consensus_client, models
 from jrtzcloudsdkcore.profile.client_profile import ClientProfile
 from jrtzcloudsdkcore.profile.http_profile import HttpProfile
 try:
-    # 实例化一个认证对象，入参需要传入今日投资云账户secretId，secretKey
+    # 实例化一个认证对象，
     cred = credential.Credential(
         os.environ.get("JRTZCLOUD_SECRET_ID"),
         os.environ.get("JRTZCLOUD_SECRET_KEY"))
@@ -58,8 +55,13 @@ try:
     clientProfile.language = "en-US"
     clientProfile.httpProfile = httpProfile
 
-    # 实例化要请求产品的client对象，clientProfile是可选的。
-    client = consensus_client.ConsensusClient(cred, "ap-shenzhen", clientProfile)
+    # 实例化要请求产品的client对象，入参需要传入今日投资云账户secretId，secretKey, clientProfile是可选的。
+    client = consensus_client.ConsensusClient(
+        "<your-access-key-id>",
+        "<your-access-key-secret>"
+        , clientProfile, 
+        "<your-region-id>"
+    );
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
     req = models.DescribeResOrgRankRequest()

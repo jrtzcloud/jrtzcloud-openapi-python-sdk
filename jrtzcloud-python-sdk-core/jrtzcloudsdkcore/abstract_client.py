@@ -53,7 +53,7 @@ class AbstractClient(object):
     _sdkVersion = 'SDK_PYTHON_%s' % jrtzcloudsdkcore.__version__
     _default_content_type = _form_urlencoded_content
 
-    def __init__(self, secretId, secretKey, profile=None, region='ap-shenzhen'):
+    def __init__(self, secretId, secretKey, region='ap-shenzhen', profile=None):
         self.credential = credential.Credential(secretId, secretKey)
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
