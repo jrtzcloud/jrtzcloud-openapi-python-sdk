@@ -55,7 +55,7 @@ try:
     client = consensus_client.ConsensusClient(
         "<your-access-key-id>",
         "<your-access-key-secret>",
-        "api-version",
+        "<api-version>",
         "<your-region-id>",
         clientProfile
     );
