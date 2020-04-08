@@ -53,9 +53,10 @@ class AbstractClient(object):
     _sdkVersion = 'SDK_PYTHON_%s' % jrtzcloudsdkcore.__version__
     _default_content_type = _form_urlencoded_content
 
-    def __init__(self, secretId, secretKey, region='ap-shenzhen', profile=None):
+    def __init__(self, secretId, secretKey, version=None, region='ap-shenzhen', profile=None):
         self.credential = credential.Credential(secretId, secretKey)
-        self.region = region
+        self.region = region or "ap-shenzhen"
+        self._apiVersion = version or self._apiVersion
         self.profile = ClientProfile() if profile is None else profile
         self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
         if self.profile.httpProfile.keepAlive:
