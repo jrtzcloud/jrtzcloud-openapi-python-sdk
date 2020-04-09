@@ -190,9 +190,12 @@ class AbstractClient(object):
         canonical_querystring = ''
 
         if req.method == 'GET' and options.get("IsMultipart") is not True:
-            params = copy.deepcopy(self._fix_params(params))
-            req.data = urlencode(params)
-            canonical_querystring = req.data
+            if params:
+                params = copy.deepcopy(self._fix_params(params))
+                req.data = urlencode(params)
+                canonical_querystring = req.data
+            else:
+                canonical_querystring = ""
             payload = ""
         else:
             ct = req.header["Content-Type"]
