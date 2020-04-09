@@ -359,28 +359,11 @@ class DescribeResOrgRankRequest(AbstractModel):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class DescribeConsensusResponse(AbstractModel):
     """公共响应体"""
 
     def __init__(self):
+        self.RequestId = None
         self.TotalCount = None
         self.Data = None
         self.Page = None
@@ -392,6 +375,7 @@ class DescribeConsensusResponse(AbstractModel):
         self.HasNextPage = None
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
         self.TotalCount = params.get("TotalCount")
         self.Data = params.get("Data")
         self.Page = params.get("Page")

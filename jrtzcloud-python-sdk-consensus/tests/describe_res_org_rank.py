@@ -63,6 +63,7 @@ try:
     print(resp.TotalCount)
     print(resp.Data[1])
     print(resp.Data[1].get("StkCoverRate"))
+    print(resp.RequestId)
 
 except JrtzCloudSDKException as err:
     print(err)
