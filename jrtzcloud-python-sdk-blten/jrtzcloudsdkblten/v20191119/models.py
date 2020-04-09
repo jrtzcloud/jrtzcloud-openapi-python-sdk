@@ -35,7 +35,7 @@ class Patch(AbstractModel):
     """Patch 请求参数结构体
     """
     def __init__(self):
-        self.Op = None
+        self.Op = "replace"
         self.Path = None
         self.Value = None
 
@@ -55,5 +55,101 @@ class ProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        self.Project = params.get("Project")
+        if params.get("Project") is not None:
+            self.Project = Project()
+            self.Project._deserialize(params.get("Project"))
+
+
+class Project(AbstractModel):
+    """模型项目响应体"""
+
+    def __init__(self):
+        self.Model = None
+        self.ProjectId = None
+        self.StartDate = None
+        self.StopDate = None
+        self.TasksLength = None
+
+    def _deserialize(self, params):
+        if params.get("Model") is not None:
+            self.Model = Model()
+            self.Model._deserialize(params.get("Model"))
+        self.ProjectId = params.get("ProjectId")
+        self.StartDate = params.get("StartDate")
+        self.StopDate = params.get("StopDate")
+        self.TasksLength = params.get("TasksLength")
+
+class Model(AbstractModel):
+    """模型响应体"""
+
+    def __init__(self):
+        self.AssetList = None
+        self.ConstrainList = None
+        self.BoundaryDict = None
+        self.OriginalExpRtnDict = None
+
+    def _deserialize(self, params):
+        self.AssetList = params.get("AssetList")
+        self.ConstrainList = params.get("ConstrainList")
+        if params.get("BoundaryDict") is not None:
+            self.BoundaryDict = BoundaryDict()
+            self.BoundaryDict._deserialize(params.get("BoundaryDict"))
+        if params.get("OriginalExpRtnDict") is not None:
+            self.OriginalExpRtnDict = OriginalExpRtnDict()
+            self.OriginalExpRtnDict._deserialize(params.get("OriginalExpRtnDict"))
+
+
+class OriginalExpRtnDict(AbstractModel):
+    """资产预期收益率字典"""
+
+    def __init__(self):
+        self.ABS_RETURN = None
+        self.ASHARE = None
+        self.CASH = None
+        self.CN_CREDIT = None
+        self.GLOBAL_DEBT = None
+        self.GOLD = None
+        self.HKSHARE = None
+        self.OIL = None
+        self.TREASURY = None
+        self.USSHARE = None
+
+    def _deserialize(self, params):
+        self.ABS_RETURN = params.get("ABS_RETURN")
+        self.ASHARE = params.get("ASHARE")
+        self.CASH = params.get("CASH")
+        self.CN_CREDIT = params.get("CN_CREDIT")
+        self.GLOBAL_DEBT = params.get("GLOBAL_DEBT")
+        self.GOLD = params.get("GOLD")
+        self.HKSHARE = params.get("HKSHARE")
+        self.OIL = params.get("OIL")
+        self.TREASURY = params.get("TREASURY")
+        self.USSHARE = params.get("USSHARE")
+
+class BoundaryDict(AbstractModel):
+    """资产持仓权重绝对值上下限字典"""
+
+    def __init__(self):
+        self.ABS_RETURN = None
+        self.ASHARE = None
+        self.CASH = None
+        self.CN_CREDIT = None
+        self.GLOBAL_DEBT = None
+        self.GOLD = None
+        self.HKSHARE = None
+        self.OIL = None
+        self.TREASURY = None
+        self.USSHARE = None
+
+    def _deserialize(self, params):
+        self.ABS_RETURN = params.get("ABS_RETURN")
+        self.ASHARE = params.get("ASHARE")
+        self.CASH = params.get("CASH")
+        self.CN_CREDIT = params.get("CN_CREDIT")
+        self.GLOBAL_DEBT = params.get("GLOBAL_DEBT")
+        self.GOLD = params.get("GOLD")
+        self.HKSHARE = params.get("HKSHARE")
+        self.OIL = params.get("OIL")
+        self.TREASURY = params.get("TREASURY")
+        self.USSHARE = params.get("USSHARE")
 
