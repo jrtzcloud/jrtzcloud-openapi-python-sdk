@@ -15,6 +15,35 @@
 
 from jrtzcloudsdkcore.abstract_model import AbstractModel
 
+class CreateProjectRequest(AbstractModel):
+    """CreateProject 请求参数结构体
+    """
+    def __init__(self):
+        self.StartDate = None
+        self.StopDate = None
+        self.Model = None
+
+    def _deserialize(self, params):
+        self.StartDate = params.get("StartDate")
+        self.StopDate = params.get("StopDate")
+        if params.get("Model") is not None:
+            self.Model = Model()
+            self.Model._deserialize(params.get("Model"))
+
+class ReplaceProjectRequest(AbstractModel):
+    """ReplaceProject 请求参数结构体
+    """
+    def __init__(self):
+        self.StartDate = None
+        self.StopDate = None
+        self.Model = None
+
+    def _deserialize(self, params):
+        self.StartDate = params.get("StartDate")
+        self.StopDate = params.get("StopDate")
+        if params.get("Model") is not None:
+            self.Model = Model()
+            self.Model._deserialize(params.get("Model"))
 
 class PatchProjectRequest(AbstractModel):
     """PatchProject 请求参数结构体
@@ -43,6 +72,9 @@ class Patch(AbstractModel):
         self.Op = params.get("Op")
         self.Path = params.get("Path")
         self.Value = params.get("Value")
+
+
+
 
 
 

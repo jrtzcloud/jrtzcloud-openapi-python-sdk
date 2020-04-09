@@ -22,36 +22,9 @@ try:
         os.environ.get("JRTZCLOUD_BLTEN_SECRET_ID"),
         os.environ.get("JRTZCLOUD_BLTEN_SECRET_KEY"))
 
-    # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
-    req = models.PatchProjectRequest()
-
-    # 填充请求参数,这里request对象的成员变量即对应接口的入参。
-    # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    req.Patch = []
-    patch = models.Patch()
-    patch.Op = "replace"
-    patch.Path = "/StartDate"
-    patch.Value = "2020-03-08"
-    patch2 = models.Patch()
-    patch2.Op = "replace"
-    patch2.Path = "/StopDate"
-    patch2.Value = "2029-09-03"
-    req.Patch.append(patch)
-    req.Patch.append(patch2)
-
-    # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
-    params = '''{
-        "Patch": [
-            {"Op": "replace", "Path": "/StartDate", "Value": "2020-03-09"},
-            {"Op": "replace", "Path": "/StopDate", "Value": "2029-09-01"}
-        ]
-    }
-    '''
-    # req.from_json_string(params)
-
     # 通过client对象调用方法发起请求。注意请求方法名与请求对象是对应的。
     # 返回的resp是一个Response类的实例，与请求对象对应。
-    resp = client.PatchProject("a8fa4a80-7a62-11ea-b95f-ee8a56efc5ad", req)
+    resp = client.DescribeProject("a8fa4a80-7a62-11ea-b95f-ee8a56efc5ad")
 
     # 输出json格式的字符串回包
     print(resp.to_json_string(indent=2))

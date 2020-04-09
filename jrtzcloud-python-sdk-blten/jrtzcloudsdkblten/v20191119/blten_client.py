@@ -22,19 +22,47 @@ class BltenClient(AbstractClient):
     _apiVersion = "2019-11-19"
     _endpoint = "blten.jrtzcloud.cn"
 
+    def CreateProject(self, request):
+        """本接口（CreateProject）用于修改用户自定义模型接口
+        :param request: Request instance for CreateProject.
+        :type request: :class:`jrtzcloudsdkblten.v20191119.models.CreateProjectRequest`
+        """
+        return self._project_request("CreateProject", "POST", "/blten/projects", request)
+
     def PatchProject(self, projectId, request):
         """本接口（PatchProject）用于修改用户自定义模型接口
+        :param projectId: Project Id.
+        :type projectId: :string
         :param request: Request instance for PatchProject.
         :type request: :class:`jrtzcloudsdkblten.v20191119.models.PatchProjectRequest`
         """
         return self._project_request("PatchProject", "PATCH", "/blten/projects/" + projectId, request)
 
+    def ReplaceProject(self, projectId, request):
+        """本接口（ReplaceProject）用于替换用户自定义模型接口
+        :param projectId: Project Id.
+        :type projectId: :string
+        :param request: Request instance for ReplaceProject.
+        :type request: :class:`jrtzcloudsdkblten.v20191119.models.ReplaceProjectRequest`
+        """
+        return self._project_request("ReplaceProject", "PUT", "/blten/projects/" + projectId, request)
+
+    def DescribeProject(self, projectId):
+        """本接口（DescribeProject）用于替换用户自定义模型接口
+        :param projectId: Project Id.
+        :type projectId: :string
+        :param request: Request instance for DescribeProject.
+        :type request: :class:`jrtzcloudsdkblten.v20191119.models.DescribeProjectRequest`
+        """
+        return self._project_request("DescribeProject", "GET", "/blten/projects/" + projectId)
 
 
 
 
 
-    def _project_request(self, action, method, path, request):
+
+
+    def _project_request(self, action, method, path, request=None):
         """公共请求方法
         :param action: Request action name.
         :param path: Request path.
@@ -42,7 +70,7 @@ class BltenClient(AbstractClient):
         :rtype: :class:`jrtzcloudsdkblten.v20191119.models.ProjectResponse`
         """
         try:
-            params = request._serialize()
+            params = None if request is None else request._serialize()
             body = self.call(action, method, path, params)
             response = json.loads(body)
             if response.get("Message"):
