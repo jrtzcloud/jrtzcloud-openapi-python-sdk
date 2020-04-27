@@ -50,10 +50,43 @@ class BltenClient(AbstractClient):
         """
         return self._project_request("DescribeProject", "GET", "/blten/projects/" + request.ProjectId)
 
+    def DescribeModelData(self, request):
+        """本接口（DescribeModelData）用于替换用户自定义模型接口
+        :param request: Request instance for DescribeModelData.
+        :type request: :class:`jrtzcloudsdkblten.v20191119.models.DescribeModelDataRequest`
+        """
+        return self._model_data_request("DescribeModelData", "GET", "/blten/model-data/projects/" + request.ProjectId, request)
 
 
 
 
+    def _model_data_request(self, action, method, path, request=None):
+        """公共请求方法
+        :param action: Request action name.
+        :param path: Request path.
+        :param request: Request instance.
+        :rtype: :class:`jrtzcloudsdkblten.v20191119.models.ProjectResponse`
+        """
+        try:
+            if request != None and hasattr(request, "ProjectId"):
+                delattr(request, "ProjectId")
+            params = None if request is None else request._serialize()
+            body = self.call(action, method, path, params)
+            response = json.loads(body)
+            if response.get("Message"):
+                raise JrtzCloudSDKException(response.get("Code"),
+                                            response.get("Message"),
+                                            response.get("RequestId"))
+                raise JrtzCloudSDKException(code, message, reqid)
+            else:
+                model = models.DescribeModelDataResponse()
+                model._deserialize(response)
+                return model
+        except Exception as e:
+            if isinstance(e, JrtzCloudSDKException):
+                raise
+            else:
+                raise JrtzCloudSDKException("JrtzCloudSDKClientError", e.message)
 
 
     def _project_request(self, action, method, path, request=None):

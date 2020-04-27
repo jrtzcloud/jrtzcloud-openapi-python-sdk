@@ -15,6 +15,21 @@
 
 from jrtzcloudsdkcore.abstract_model import AbstractModel
 
+class DescribeModelDataRequest(AbstractModel):
+    """DescribeModelData 请求参数结构体
+    """
+    def __init__(self):
+        self.ProjectId = None
+        self.RiskN = None
+        self.StartDate = None
+        self.EndDate = None
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RiskN = params.get("RiskN")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
 class DescribeProjectRequest(AbstractModel):
     """DescribeProject 请求参数结构体
     """
@@ -87,6 +102,52 @@ class Patch(AbstractModel):
         self.Value = params.get("Value")
 
 
+
+class DescribeModelDataResponse(AbstractModel):
+    """模型数据响应体"""
+
+    def __init__(self):
+        self.RequestId = None
+        self.TotalCount = None
+        self.Instances = None
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = Instances()
+            self.Instances._deserialize(params.get("Instances"))
+
+
+class Instances(AbstractModel):
+    """模型总实例数据响应体"""
+
+    def __init__(self):
+        self.Count = None
+        self.Fields = None
+        self.Data = None
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Fields = params.get("Fields")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Instance()
+                obj._deserialize(item)
+                self.Data.append(obj)
+
+
+class Instance(AbstractModel):
+    """模型实例数据响应体"""
+
+    def __init__(self):
+        self.RiskWtSet = None
+        self.Day = None
+
+    def _deserialize(self, params):
+        self.RiskWtSet = params.get("RiskWtSet")
+        self.Day = params.get("Day")
 
 
 
