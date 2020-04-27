@@ -20,7 +20,7 @@ from jrtzcloudsdkblten.v20191119 import models
 
 class BltenClient(AbstractClient):
     _apiVersion = "2019-11-19"
-    _endpoint = "blten.jrtzcloud.cn"
+    _endpoint = "blten.test.investoday.net"
 
     def CreateProject(self, request):
         """本接口（CreateProject）用于修改用户自定义模型接口
