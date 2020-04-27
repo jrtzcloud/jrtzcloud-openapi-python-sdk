@@ -27,14 +27,14 @@ try:
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    # req.ProjectId = "47244b5c-8850-11ea-a178-6ab4c551ca93"
+    req.ProjectId = "edb4340c-886c-11ea-b988-4a4ed8f03af7"
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
-            "ProjectId": "47244b5c-8850-11ea-a178-6ab4c551ca93"
+            "ProjectId": "edb4340c-886c-11ea-b988-4a4ed8f03af7"
         }
         '''
-    req.from_json_string(params)
+    # req.from_json_string(params)
 
     # 通过client对象调用方法发起请求。注意请求方法名与请求对象是对应的。
     # 返回的resp是一个Response类的实例，与请求对象对应。

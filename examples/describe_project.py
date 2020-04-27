@@ -23,35 +23,29 @@ try:
         os.environ.get("JRTZCLOUD_BLTEN_SECRET_KEY"))
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
-    req = models.DescribeModelDataRequest()
+    req = models.DescribeProjectRequest()
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    req.ProjectId = "edb4340c-886c-11ea-b988-4a4ed8f03af7"
-    req.RiskN = 1
-    req.StartDate = "1919-08-22"
-    req.EndDate = "2030-02-22"
+    req.ProjectId = "796452b4-8865-11ea-ac8b-36fbcb2b169c"
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
-            "ProjectId": "edb4340c-886c-11ea-b988-4a4ed8f03af7",
-            "RiskN": 1,
-            "StartDate": "1919-08-22",
-            "EndDate": "2030-02-22"
+            "ProjectId": "796452b4-8865-11ea-ac8b-36fbcb2b169c"
         }
         '''
-    req.from_json_string(params)
+    # req.from_json_string(params)
 
     # 通过client对象调用方法发起请求。注意请求方法名与请求对象是对应的。
     # 返回的resp是一个Response类的实例，与请求对象对应。
-    resp = client.DescribeModelData(req)
+    resp = client.DescribeProject(req)
 
     # 输出json格式的字符串回包
     print(resp.to_json_string(indent=2))
 
     # 也可以取出单个值。
     # 你可以通过官网接口文档或跳转到response对象的定义处查看返回字段的定义。
-    print(resp.Instances.Data)
+    print(resp.Project.Model.BoundaryDict.ASHARE)
 
 except JrtzCloudSDKException as err:
     print(err)
