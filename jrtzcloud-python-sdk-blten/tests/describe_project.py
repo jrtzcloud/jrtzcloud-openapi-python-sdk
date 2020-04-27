@@ -22,9 +22,16 @@ try:
         os.environ.get("JRTZCLOUD_BLTEN_SECRET_ID"),
         os.environ.get("JRTZCLOUD_BLTEN_SECRET_KEY"))
 
+    # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
+    req = models.DescribeProjectRequest()
+
+    # 填充请求参数,这里request对象的成员变量即对应接口的入参。
+    # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
+    req.ProjectId = "47244b5c-8850-11ea-a178-6ab4c551ca93"
+
     # 通过client对象调用方法发起请求。注意请求方法名与请求对象是对应的。
     # 返回的resp是一个Response类的实例，与请求对象对应。
-    resp = client.DescribeProject("a8fa4a80-7a62-11ea-b95f-ee8a56efc5ad")
+    resp = client.DescribeProject(req)
 
     # 输出json格式的字符串回包
     print(resp.to_json_string(indent=2))

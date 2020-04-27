@@ -15,6 +15,15 @@
 
 from jrtzcloudsdkcore.abstract_model import AbstractModel
 
+class DescribeProjectRequest(AbstractModel):
+    """DescribeProject 请求参数结构体
+    """
+    def __init__(self):
+        self.ProjectId = None
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+
 class CreateProjectRequest(AbstractModel):
     """CreateProject 请求参数结构体
     """
@@ -34,11 +43,13 @@ class ReplaceProjectRequest(AbstractModel):
     """ReplaceProject 请求参数结构体
     """
     def __init__(self):
+        self.ProjectId = None
         self.StartDate = None
         self.StopDate = None
         self.Model = None
 
     def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
         self.StartDate = params.get("StartDate")
         self.StopDate = params.get("StopDate")
         if params.get("Model") is not None:
@@ -49,9 +60,11 @@ class PatchProjectRequest(AbstractModel):
     """PatchProject 请求参数结构体
     """
     def __init__(self):
+        self.ProjectId = None
         self.Patch = None
 
     def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
         if params.get("Patch") is not None:
             self.Patch = []
             for item in params.get("Patch"):
@@ -101,6 +114,7 @@ class Project(AbstractModel):
         self.StartDate = None
         self.StopDate = None
         self.TasksLength = None
+        self.PredictTime = None
 
     def _deserialize(self, params):
         if params.get("Model") is not None:
@@ -110,6 +124,7 @@ class Project(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.StopDate = params.get("StopDate")
         self.TasksLength = params.get("TasksLength")
+        self.PredictTime = params.get("PredictTime")
 
 class Model(AbstractModel):
     """模型响应体"""

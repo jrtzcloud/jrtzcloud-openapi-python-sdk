@@ -29,32 +29,26 @@ class BltenClient(AbstractClient):
         """
         return self._project_request("CreateProject", "POST", "/blten/projects", request)
 
-    def PatchProject(self, projectId, request):
+    def PatchProject(self, request):
         """本接口（PatchProject）用于修改用户自定义模型接口
-        :param projectId: Project Id.
-        :type projectId: :string
         :param request: Request instance for PatchProject.
         :type request: :class:`jrtzcloudsdkblten.v20191119.models.PatchProjectRequest`
         """
-        return self._project_request("PatchProject", "PATCH", "/blten/projects/" + projectId, request)
+        return self._project_request("PatchProject", "PATCH", "/blten/projects/" + request.ProjectId, request)
 
-    def ReplaceProject(self, projectId, request):
+    def ReplaceProject(self, request):
         """本接口（ReplaceProject）用于替换用户自定义模型接口
-        :param projectId: Project Id.
-        :type projectId: :string
         :param request: Request instance for ReplaceProject.
         :type request: :class:`jrtzcloudsdkblten.v20191119.models.ReplaceProjectRequest`
         """
-        return self._project_request("ReplaceProject", "PUT", "/blten/projects/" + projectId, request)
+        return self._project_request("ReplaceProject", "PUT", "/blten/projects/" + request.ProjectId, request)
 
-    def DescribeProject(self, projectId):
+    def DescribeProject(self, request):
         """本接口（DescribeProject）用于替换用户自定义模型接口
-        :param projectId: Project Id.
-        :type projectId: :string
         :param request: Request instance for DescribeProject.
         :type request: :class:`jrtzcloudsdkblten.v20191119.models.DescribeProjectRequest`
         """
-        return self._project_request("DescribeProject", "GET", "/blten/projects/" + projectId)
+        return self._project_request("DescribeProject", "GET", "/blten/projects/" + request.ProjectId)
 
 
 
@@ -70,6 +64,8 @@ class BltenClient(AbstractClient):
         :rtype: :class:`jrtzcloudsdkblten.v20191119.models.ProjectResponse`
         """
         try:
+            if request != None and hasattr(request, "ProjectId"):
+                delattr(request, "ProjectId")
             params = None if request is None else request._serialize()
             body = self.call(action, method, path, params)
             response = json.loads(body)
