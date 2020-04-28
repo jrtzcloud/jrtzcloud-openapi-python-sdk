@@ -65,7 +65,7 @@ try:
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
-            "ProjectId": "796452b4-8865-11ea-ac8b-36fbcb2b169c",
+            "ProjectId": "edb4340c-886c-11ea-b988-4a4ed8f03af7",
             "Model": {
                 "AssetList": ["ASHARE", "USSHARE", "HKSHARE", "ABS_RETURN", "OIL", "GOLD", "TREASURY", "CN_CREDIT", "GLOBAL_DEBT", "CASH"], 
                 "OriginalExpRtnDict": {

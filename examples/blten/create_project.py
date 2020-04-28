@@ -33,16 +33,16 @@ try:
     model = models.Model()
     model.AssetList = ["ASHARE", "USSHARE", "HKSHARE", "ABS_RETURN", "OIL", "GOLD", "TREASURY", "CN_CREDIT", "GLOBAL_DEBT", "CASH"]
     originalExpRtnDict = models.OriginalExpRtnDict()
-    originalExpRtnDict.ASHARE = 0.12
+    originalExpRtnDict.ASHARE = 0.22
     originalExpRtnDict.USSHARE = 0.082
     originalExpRtnDict.HKSHARE = 0.082
     originalExpRtnDict.ABS_RETURN = 0.045
     originalExpRtnDict.OIL = 0.085
-    originalExpRtnDict.GOLD = 0.06
+    originalExpRtnDict.GOLD = 0.08
     originalExpRtnDict.CN_CREDIT = 0.045
     originalExpRtnDict.TREASURY = 0.042
     originalExpRtnDict.GLOBAL_DEBT = 0.04
-    originalExpRtnDict.CASH = 0.03
+    originalExpRtnDict.CASH = 0.04
 
     boundaryDict = models.BoundaryDict()
     boundaryDict.ASHARE = [0, 1.0]

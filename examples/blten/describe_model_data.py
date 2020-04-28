@@ -27,14 +27,14 @@ try:
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    req.ProjectId = "796452b4-8865-11ea-ac8b-36fbcb2b169c"
+    req.ProjectId = "c296f198-88fc-11ea-8874-ca85f7c0f13a"
     req.RiskN = 1
     req.StartDate = "1919-08-22"
     req.EndDate = "2030-02-22"
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
-            "ProjectId": "796452b4-8865-11ea-ac8b-36fbcb2b169c",
+            "ProjectId": "c296f198-88fc-11ea-8874-ca85f7c0f13a",
             "RiskN": 1,
             "StartDate": "1919-08-22",
             "EndDate": "2030-02-22"

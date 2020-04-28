@@ -27,7 +27,7 @@ try:
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    req.ProjectId = "796452b4-8865-11ea-ac8b-36fbcb2b169c"
+    req.ProjectId = "edb4340c-886c-11ea-b988-4a4ed8f03af7"
     req.Patch = []
     patch = models.Patch()
     patch.Op = "replace"
@@ -43,7 +43,7 @@ try:
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
-        "ProjectId": "796452b4-8865-11ea-ac8b-36fbcb2b169c",
+        "ProjectId": "edb4340c-886c-11ea-b988-4a4ed8f03af7",
         "Patch": [
             {"Op": "replace", "Path": "/Model", "Value": {"AssetList": ["ASHARE", "USSHARE", "HKSHARE", "ABS_RETURN", "OIL", "GOLD", "TREASURY", "CN_CREDIT", "GLOBAL_DEBT", "CASH"], "OriginalExpRtnDict": {"ASHARE": 0.12, "USSHARE": 0.082, "HKSHARE": 0.082, "ABS_RETURN": 0.045, "OIL": 0.085, "GOLD": 0.06, "CN_CREDIT": 0.045, "TREASURY": 0.042, "GLOBAL_DEBT": 0.04, "CASH": 0.03}, "BoundaryDict": {"ASHARE": [0, 1.0], "USSHARE": [0, 1.0], "HKSHARE": [0, 1.0], "ABS_RETURN": [0, 0.1], "OIL": [0, 1.0], "GOLD": [0, 1.0], "TREASURY": [0.03, 1.0], "CN_CREDIT": [0, 1.0], "GLOBAL_DEBT": [0.0, 1.0], "CASH": [0.02, 1.0]}, "ConstrainList": [["ineq", "(0.3 * ASHARE) - USSHARE"]]}},
             {"Op": "replace", "Path": "/StartDate", "Value": "2020-03-09"},
