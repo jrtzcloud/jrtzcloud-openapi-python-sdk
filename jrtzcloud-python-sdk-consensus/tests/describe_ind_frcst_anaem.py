@@ -28,7 +28,7 @@ try:
     # clientProfile.httpProfile = httpProfile
 
     # 实例化要请求产品的client对象，clientProfile是可选的。
-    client = consensus_client.ConsensusClient(os.environ.get("JRTZCLOUD_SECRET_ID"), os.environ.get("JRTZCLOUD_SECRET_KEY"))
+    client = consensus_client.ConsensusClient(os.environ.get("JRTZCLOUD_DATAAPI_SECRET_ID"), os.environ.get("JRTZCLOUD_DATAAPI_SECRET_KEY"))
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
     req = models.DescribeIndFrcstAnaemRequest()
@@ -37,7 +37,7 @@ try:
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
     req.BeginDate = '20190429'
     req.EndDate = '20190528'
-    req.SecCd = "000300"
+    req.SecCd = "000002"
     req.OperType = "1"
     req.Page = '1'
     req.PageCount = '10'

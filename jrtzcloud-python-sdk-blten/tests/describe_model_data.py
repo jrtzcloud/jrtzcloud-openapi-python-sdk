@@ -27,7 +27,7 @@ try:
 
     # 填充请求参数,这里request对象的成员变量即对应接口的入参。
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
-    req.ProjectId = "edb4340c-886c-11ea-b988-4a4ed8f03af7"
+    req.ProjectId = "dbaf376c-89f6-11ea-8545-8ae00a9f5ead"
     req.RiskN = 1
     req.StartDate = "1919-08-22"
     req.EndDate = "2030-02-22"

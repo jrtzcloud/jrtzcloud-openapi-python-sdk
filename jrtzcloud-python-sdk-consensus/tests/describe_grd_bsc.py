@@ -39,7 +39,6 @@ try:
     req.EndDate = '20190528'
     req.SecCd = '000300'
     req.OperType = '1'
-    req.IndId = '0'
     req.Page = '1'
     req.PageCount = '10'
 
@@ -49,7 +48,6 @@ try:
         "EndDate": "20190529",
         "SecCd": "000300",
         "OperType": "1",
-        "IndId": "0",
         "Page": "1",
         "PageCount": "10"
     }'''

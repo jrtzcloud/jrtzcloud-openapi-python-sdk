@@ -51,24 +51,18 @@ class DescribeGrdBscRequest(AbstractModel):
         self.EndDate = None
         self.OperType = None
         self.SecCd = None
-        self.IndId = None
-        self.RptYr = None
         self.Fields = None
         self.Page = None
         self.PageCount = None
-        self.RptRang = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
         self.EndDate = params.get("EndDate")
         self.OperType = params.get("OperType")
         self.SecCd = params.get("SecCd")
-        self.IndId = params.get("IndId")
-        self.RptYr = params.get("RptYr")
         self.Fields = params.get("Fields")
         self.Page = params.get("Page")
         self.PageCount = params.get("PageCount")
-        self.RptRang = params.get("RptRang")
 
 
 
