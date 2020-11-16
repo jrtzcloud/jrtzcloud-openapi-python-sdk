@@ -20,12 +20,11 @@
 
 from setuptools import setup, find_packages
 import os
-import sys
 
 """
 setup module for consensus.
 
-Created on 2020-03-30
+Created on 2020-11-16
 
 @author: Marvin Pan
 """
