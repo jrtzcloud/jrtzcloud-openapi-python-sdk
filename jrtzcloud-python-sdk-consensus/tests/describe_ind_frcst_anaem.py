@@ -12,8 +12,8 @@ from jrtzcloudsdkcore.profile.http_profile import HttpProfile
 try:
     # 实例化一个认证对象，入参需要传入今日投资云账户secretId，secretKey
     # cred = credential.Credential(
-    #     os.environ.get("JRTZCLOUD_SECRET_ID"),
-    #     os.environ.get("JRTZCLOUD_SECRET_KEY"))
+    #     os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_ID"),
+    #     os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_KEY"))
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     # httpProfile = HttpProfile()

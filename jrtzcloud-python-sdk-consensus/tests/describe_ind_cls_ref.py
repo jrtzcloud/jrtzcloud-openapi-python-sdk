@@ -12,8 +12,8 @@ from jrtzcloudsdkcore.profile.http_profile import HttpProfile
 try:
     # 实例化一个认证对象，入参需要传入今日投资云账户secretId，secretKey
     # cred = credential.Credential(
-    #     os.environ.get("JRTZCLOUD_SECRET_ID"),
-    #     os.environ.get("JRTZCLOUD_SECRET_KEY"))
+    #     os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_ID"),
+    #     os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_KEY"))
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     # httpProfile = HttpProfile()
@@ -28,7 +28,7 @@ try:
     # clientProfile.httpProfile = httpProfile
 
     # 实例化要请求产品的client对象，clientProfile是可选的。
-    client = consensus_client.ConsensusClient(os.environ.get("JRTZCLOUD_SECRET_ID"), os.environ.get("JRTZCLOUD_SECRET_KEY"))
+    client = consensus_client.ConsensusClient(os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_ID"), os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_KEY"))
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
     req = models.DescribeIduClsRefRequest()
