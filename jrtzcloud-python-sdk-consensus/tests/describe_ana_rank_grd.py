@@ -34,8 +34,8 @@ try:
     req.IduId = "A"
     req.IduCl = "INDUS2_CL"
     req.PageNo = '1'
-    req.PageSize = '10'
-    req.Fields = "PubDt,RankTyp,BegDt,EndDt,IduCl"
+    req.PageSize = '1'
+    # req.Fields = "PubDt,RankTyp,BegDt,EndDt,IduCl"
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{

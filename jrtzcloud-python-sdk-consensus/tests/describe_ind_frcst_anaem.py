@@ -34,8 +34,8 @@ try:
     req.SecCd = "000002"
     req.OperType = "1"
     req.PageNo = '1'
-    req.PageSize = '10'
-    req.Fields = "PubDt, SecCd"
+    req.PageSize = '1'
+    # req.Fields = "PubDt, SecCd"
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{

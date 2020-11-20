@@ -31,7 +31,7 @@ try:
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
     req.QueryTyp = "1"
     req.OrgCl = "1"
-    req.Fields = "PubDt, OrgNm"
+    # req.Fields = "PubDt, OrgNm"
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
