@@ -32,8 +32,8 @@ def fetch_jrtz_Anaem(client, models, start_date, end_date):
 	# 	"SecCd"		: "000001",
 	# 	"OperType"	: "1",
 	# 	"RptRang"	: "1",
-	# 	"Page" 		: %s,
-	# 	"PageCount" : "1000"
+	# 	"PageNo" 		: %s,
+	# 	"PageSize" : "1000"
 	#  }'''
     #
     # HasNextPage = 1
@@ -55,8 +55,8 @@ def fetch_jrtz_Anaem(client, models, start_date, end_date):
 		"SecCd"		: "399106",
 		"OperType"	: "1",
 		"RptRang"	: "1", 
-		"Page" 		: %s,
-		"PageCount" : "1000"
+		"PageNo" 		: %s,
+		"PageSize" : "1000"
 	 }'''
     HasNextPage = 1
     page = 1

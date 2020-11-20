@@ -28,8 +28,8 @@ class DescribeEstBscRequest(AbstractModel):
         self.IndId = None
         self.RptYr = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -39,8 +39,8 @@ class DescribeEstBscRequest(AbstractModel):
         self.IndId = params.get("IndId")
         self.RptYr = params.get("RptYr")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 class DescribeGrdBscRequest(AbstractModel):
     """DescribeGrdBsc 请求参数结构体
@@ -52,8 +52,8 @@ class DescribeGrdBscRequest(AbstractModel):
         self.OperType = None
         self.SecCd = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -61,8 +61,8 @@ class DescribeGrdBscRequest(AbstractModel):
         self.OperType = params.get("OperType")
         self.SecCd = params.get("SecCd")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 
@@ -78,8 +78,8 @@ class DescribeIndFrcstHistRequest(AbstractModel):
         self.OperType = None
         self.RptYr = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
         self.RptRang = None
 
     def _deserialize(self, params):
@@ -90,8 +90,8 @@ class DescribeIndFrcstHistRequest(AbstractModel):
         self.OperType = params.get("OperType")
         self.RptYr = params.get("RptYr")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
         self.RptRang = params.get("RptRang")
 
 
@@ -142,8 +142,8 @@ class DescribeAnaRankEstIduRequest(AbstractModel):
         self.IduId = None
         self.AnaNm = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -152,8 +152,8 @@ class DescribeAnaRankEstIduRequest(AbstractModel):
         self.IduId = params.get("IduId")
         self.AnaNm = params.get("AnaNm")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeAnaRankGrdRequest(AbstractModel):
@@ -167,8 +167,8 @@ class DescribeAnaRankGrdRequest(AbstractModel):
         self.IduId = None
         self.AnaNm = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -177,8 +177,8 @@ class DescribeAnaRankGrdRequest(AbstractModel):
         self.IduId = params.get("IduId")
         self.AnaNm = params.get("AnaNm")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeIndFrcstAnaemRequest(AbstractModel):
@@ -193,8 +193,8 @@ class DescribeIndFrcstAnaemRequest(AbstractModel):
         self.RptRang = None
         self.RptYr = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -204,8 +204,8 @@ class DescribeIndFrcstAnaemRequest(AbstractModel):
         self.RptRang = params.get("RptRang")
         self.RptYr = params.get("RptYr")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeIndFrcstIduemRequest(AbstractModel):
@@ -219,8 +219,8 @@ class DescribeIndFrcstIduemRequest(AbstractModel):
         self.IduId = None
         self.RptYr = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -229,8 +229,8 @@ class DescribeIndFrcstIduemRequest(AbstractModel):
         self.IduId = params.get("IduId")
         self.RptYr = params.get("RptYr")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeIndFrcstTianyanRequest(AbstractModel):
@@ -245,8 +245,8 @@ class DescribeIndFrcstTianyanRequest(AbstractModel):
         self.RptRang = None
         self.RptYr = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -256,8 +256,8 @@ class DescribeIndFrcstTianyanRequest(AbstractModel):
         self.RptRang = params.get("RptRang")
         self.RptYr = params.get("RptYr")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeIndRankEqIduRequest(AbstractModel):
@@ -270,8 +270,8 @@ class DescribeIndRankEqIduRequest(AbstractModel):
         self.SecCd = None
         self.OperType = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -279,8 +279,8 @@ class DescribeIndRankEqIduRequest(AbstractModel):
         self.SecCd = params.get("SecCd")
         self.OperType = params.get("OperType")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeIndRankPmRequest(AbstractModel):
@@ -293,8 +293,8 @@ class DescribeIndRankPmRequest(AbstractModel):
         self.SecCd = None
         self.OperType = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -302,8 +302,8 @@ class DescribeIndRankPmRequest(AbstractModel):
         self.SecCd = params.get("SecCd")
         self.OperType = params.get("OperType")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeIndRankRvIduRequest(AbstractModel):
@@ -316,8 +316,8 @@ class DescribeIndRankRvIduRequest(AbstractModel):
         self.SecCd = None
         self.OperType = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
@@ -325,8 +325,8 @@ class DescribeIndRankRvIduRequest(AbstractModel):
         self.SecCd = params.get("SecCd")
         self.OperType = params.get("OperType")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeResOrgRankRequest(AbstractModel):
@@ -338,44 +338,42 @@ class DescribeResOrgRankRequest(AbstractModel):
         self.EndDate = None
         self.OrgCl = None
         self.Fields = None
-        self.Page = None
-        self.PageCount = None
+        self.PageNo = None
+        self.PageSize = None
 
     def _deserialize(self, params):
         self.BeginDate = params.get("BeginDate")
         self.EndDate = params.get("EndDate")
         self.OrgCl = params.get("OrgCl")
         self.Fields = params.get("Fields")
-        self.Page = params.get("Page")
-        self.PageCount = params.get("PageCount")
-
-
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
 
 
 
 class DescribeConsensusResponse(AbstractModel):
-    """公共响应体"""
+    """公共返回响应体"""
 
     def __init__(self):
         self.RequestId = None
-        self.TotalCount = None
+        self.Fields = None
         self.Data = None
-        self.Page = None
+        self.Total = None
+        self.PageNo = None
         self.PageSize = None
         self.Pages = None
-        self.RequestId = None
+        self.HasNextPage = None
         self.NextPage = None
         self.LastPage = None
-        self.HasNextPage = None
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        self.TotalCount = params.get("TotalCount")
+        self.Fields = params.get("Fields")
         self.Data = params.get("Data")
-        self.Page = params.get("Page")
+        self.Total = params.get("Total")
+        self.PageNo = params.get("PageNo")
         self.PageSize = params.get("PageSize")
         self.Pages = params.get("Pages")
-        self.RequestId = params.get("RequestId")
+        self.HasNextPage = params.get("HasNextPage")
         self.NextPage = params.get("NextPage")
         self.LastPage = params.get("LastPage")
-        self.HasNextPage = params.get("HasNextPage")

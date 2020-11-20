@@ -10,25 +10,19 @@ from jrtzcloudsdkconsensus.v20191119 import consensus_client, models
 from jrtzcloudsdkcore.profile.client_profile import ClientProfile
 from jrtzcloudsdkcore.profile.http_profile import HttpProfile
 try:
-    # 实例化一个认证对象，入参需要传入今日投资云账户secretId，secretKey
-    # cred = credential.Credential(
-    #     os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_ID"),
-    #     os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_KEY"))
-
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
-    # httpProfile = HttpProfile()
-    # httpProfile.reqMethod = "GET"  # 请求方法(默认为post请求)
-    # httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
-    # httpProfile.endpoint = "dataapi.investoday.net"  # 指定接入地域域名(默认就近接入)
+    httpProfile = HttpProfile()
+    httpProfile.reqMethod = "GET"  # 请求方法(默认为post请求)
+    httpProfile.reqTimeout = 30  # 请求超时时间，单位为秒(默认60秒)
+    httpProfile.endpoint = "lyzt.dev.investoday.net"  # 指定接入地域域名(默认就近接入)
 
     # 实例化一个client选项，可选的，没有特殊需求可以跳过。
-    # clientProfile = ClientProfile()
-    # clientProfile.signMethod = "JC1-HMAC-SHA256"  # 指定签名算法
-    # clientProfile.language = "en-US"
-    # clientProfile.httpProfile = httpProfile
+    clientProfile = ClientProfile(httpProfile)
 
     # 实例化要请求产品的client对象，clientProfile是可选的。
-    client = consensus_client.ConsensusClient(os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_ID"), os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_KEY"))
+    client = consensus_client.ConsensusClient(
+        os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_ID"),
+        os.environ.get("JRTZCLOUD_LYZT_DEV_SECRET_KEY"), profile=clientProfile)
 
     # 实例化一个实例信息查询请求对象,每个接口都会对应一个request对象。
     req = models.DescribeIndRankRvIduRequest()
@@ -39,8 +33,9 @@ try:
     req.EndDate = '20190528'
     req.SecCd = "000300"
     req.OperType = "1"
-    req.Page = '1'
-    req.PageCount = '10'
+    req.PageNo = '1'
+    req.PageSize = '10'
+    req.Fields = "PubDt, SecCd"
 
     # 这里还支持以标准json格式的string来赋值请求参数的方式。下面的代码跟上面的参数赋值是等效的。
     params = '''{
@@ -48,8 +43,8 @@ try:
         "EndDate": "20190528",
         "SecCd": "000300",
         "OperType": "1",
-        "Page": "1",
-        "PageCount": "10"
+        "PageNo": "1",
+        "PageSize": "10"
     }'''
     # req.from_json_string(params)
 
@@ -62,7 +57,7 @@ try:
 
     # 也可以取出单个值。
     # 你可以通过官网接口文档或跳转到response对象的定义处查看返回字段的定义。
-    print(resp.TotalCount)
+    print(resp.Total)
 
 except JrtzCloudSDKException as err:
     print(err)
