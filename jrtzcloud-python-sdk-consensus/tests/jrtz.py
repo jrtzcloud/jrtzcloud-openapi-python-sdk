@@ -61,8 +61,8 @@ def fetch_jrtz_Anaem(client, models, start_date, end_date):
 		"SecCd"		: "399106",
 		"OperType"	: "1",
 		"RptRang"	: "1", 
-		"PageNo" 		: %s,
-		"PageSize" : "1000"
+		"PageNo"    : %s,
+		"PageSize"  : "1000"
 	 }'''
     HasNextPage = 1
     page = 1
@@ -88,13 +88,14 @@ def dump_jrtz(client, models, date):
 
     data = pd.DataFrame(data[1:], columns=data[0])
     print('总数据长度=> ' + str(len(data)))
-    data = data[data['RptYr'] == int(str(date)[:4])]
-    print('2019数据长度=> ' + str(len(data)))
-    data.to_csv('{0}_{1}.csv'.format('jrtz', date), encoding='utf_8_sig', index=False)
+    year = int(str(date)[:4])
+    data = data[data['RptYr'] == year]
+    print(str(year) + '数据长度=> ' + str(len(data)))
+    # data.to_csv('{0}_{1}.csv'.format('jrtz', date), encoding='utf_8_sig', index=False)
 
     return 0
 
 
-dump_jrtz(client, models, 20190531)
+dump_jrtz(client, models, 20201123)
 
 # import pdb;pdb.set_trace()

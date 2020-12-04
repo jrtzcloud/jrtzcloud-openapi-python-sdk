@@ -5,3 +5,4 @@ dist
 jrtzcloud_python_sdk_core.egg-info
 jrtzcloud_python_sdk_consensus.egg-info
 jrtzcloud_python_sdk_blten.egg-info
+jrtzcloud-python-sdk-consensus/tests/zszq.py
