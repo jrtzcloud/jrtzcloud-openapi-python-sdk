@@ -31,7 +31,7 @@ try:
     # 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义。
     req.BeginDate = '20190429'
     req.EndDate = '20190528'
-    req.SecCd = "000300"
+    req.SecCd = "000001"
     req.OperType = "1"
     req.PageNo = '1'
     req.PageSize = '1'
